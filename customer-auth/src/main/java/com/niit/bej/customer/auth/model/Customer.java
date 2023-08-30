@@ -17,4 +17,14 @@ public class Customer {
     private String email;
     @Column(name = "password", length = 25, unique = true, nullable = false)
     private String password;
+
+    public Customer() {
+    }
+
+    public Customer(String fullname, String contact, String email, String password) {
+        this.fullname = fullname;
+        this.contact = contact;
+        this.email = email;
+        this.password = password;
+    }
 }

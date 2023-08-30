@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
+import java.util.Objects;
 
 @Document
 public class Customer {
@@ -63,5 +64,29 @@ public class Customer {
 
     public void setRestaurants(List<Restaurant> restaurants) {
         this.restaurants = restaurants;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(fullname, customer.fullname) && Objects.equals(contact, customer.contact) && Objects.equals(email, customer.email) && Objects.equals(addresses, customer.addresses) && Objects.equals(restaurants, customer.restaurants);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullname, contact, email, addresses, restaurants);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "fullname='" + fullname + '\'' +
+                ", contact='" + contact + '\'' +
+                ", email='" + email + '\'' +
+                ", addresses=" + addresses +
+                ", restaurants=" + restaurants +
+                '}';
     }
 }

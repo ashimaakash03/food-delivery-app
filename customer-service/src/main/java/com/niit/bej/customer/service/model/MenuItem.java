@@ -2,6 +2,8 @@ package com.niit.bej.customer.service.model;
 
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.Objects;
+
 public class MenuItem {
     @MongoId
     private long id;
@@ -49,5 +51,28 @@ public class MenuItem {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return id == menuItem.id && Float.compare(price, menuItem.price) == 0 && Objects.equals(name, menuItem.name) && Objects.equals(category, menuItem.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, category, price);
+    }
+
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

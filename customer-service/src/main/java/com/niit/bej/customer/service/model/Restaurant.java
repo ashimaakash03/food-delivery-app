@@ -10,4 +10,16 @@ public class Restaurant {
     private String name;
     private String locationCity;
     private List<MenuItem> orders;
+
+    public Restaurant() {
+    }
+
+    public Restaurant(long id, String name, String locationCity, List<MenuItem> orders) {
+        this.id = id;
+        this.name = name;
+        this.locationCity = locationCity;
+        this.orders = orders;
+    }
+
+
 }

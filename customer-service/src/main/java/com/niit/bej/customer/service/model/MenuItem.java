@@ -8,4 +8,14 @@ public class MenuItem {
     private String name;
     private String category;
     private float price;
+
+    public MenuItem() {
+    }
+
+    public MenuItem(long id, String name, String category, float price) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+    }
 }

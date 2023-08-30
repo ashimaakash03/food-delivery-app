@@ -21,5 +21,35 @@ public class Restaurant {
         this.orders = orders;
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocationCity() {
+        return locationCity;
+    }
+
+    public void setLocationCity(String locationCity) {
+        this.locationCity = locationCity;
+    }
+
+    public List<MenuItem> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<MenuItem> orders) {
+        this.orders = orders;
+    }
 }

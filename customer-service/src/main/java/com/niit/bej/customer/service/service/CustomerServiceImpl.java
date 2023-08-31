@@ -3,10 +3,8 @@ package com.niit.bej.customer.service.service;
 import com.niit.bej.customer.service.exception.*;
 import com.niit.bej.customer.service.model.Customer;
 import com.niit.bej.customer.service.model.Restaurant;
-import com.niit.bej.customer.service.proxy.CustomerProxy;
 import com.niit.bej.customer.service.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,25 +14,20 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final CustomerProxy customerProxy;
+
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository, CustomerProxy customerProxy) {
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
-        this.customerProxy = customerProxy;
     }
 
     @Override
     public Customer registerCustomer(Customer customer) throws CustomerAlreadyPresentException {
-        if (this.customerRepository.findById(customer.getEmail()).isPresent()) {
+        Optional<Customer> optionalCustomer = this.customerRepository.findById(customer.getEmail());
+        if (optionalCustomer.isPresent()) {
             throw new CustomerAlreadyPresentException("Customer with Email: " + customer.getEmail() + " already present");
         } else {
-            ResponseEntity<?> responseEntity = this.customerProxy.registerCustomer(customer);
-            if (responseEntity.getStatusCode().value() != 201) {
-                return this.customerRepository.save(customer);
-            } else {
-                throw new CustomerAlreadyPresentException("Customer with Email: " + customer.getEmail() + " already present");
-            }
+            return this.customerRepository.save(customer);
         }
     }
 

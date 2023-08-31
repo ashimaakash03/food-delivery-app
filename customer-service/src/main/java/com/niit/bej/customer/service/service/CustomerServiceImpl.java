@@ -195,11 +195,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Address addAddressForCustomer(Address address, String email) throws CustomerNotFoundException {
+    public Address addAddressForCustomer(Address address, String email) throws CustomerNotFoundException, AddressAlreadyPresentException {
         Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
         if (optionalCustomer.isPresent()) {
             Customer customerInDatabase = optionalCustomer.get();
             List<Address> addressList = customerInDatabase.getAddresses();
+            if (addressList.contains(address)) {
+                throw new AddressAlreadyPresentException("Address already present in the list");
+            }
             addressList.add(address);
             return address;
         } else {

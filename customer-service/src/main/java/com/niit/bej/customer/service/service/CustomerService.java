@@ -27,7 +27,7 @@ public interface CustomerService {
 
     boolean deleteCustomer(String email) throws CustomerNotFoundException;
 
-    Address addAddressForCustomer(Address address, String email) throws CustomerNotFoundException;
+    Address addAddressForCustomer(Address address, String email) throws CustomerNotFoundException, AddressAlreadyPresentException;
 
     Address getSingleAddressForCustomer(String flatDetails, String email) throws EmptyDatabaseException, AddressNotFoundException, CustomerNotFoundException;
 

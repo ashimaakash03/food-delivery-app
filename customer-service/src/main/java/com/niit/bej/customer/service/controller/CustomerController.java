@@ -1,6 +1,7 @@
 package com.niit.bej.customer.service.controller;
 
 import com.niit.bej.customer.service.exception.*;
+import com.niit.bej.customer.service.model.Address;
 import com.niit.bej.customer.service.model.Customer;
 import com.niit.bej.customer.service.model.Restaurant;
 import com.niit.bej.customer.service.service.CustomerService;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("/api/v1/customer")
 public class CustomerController {
     private final CustomerService customerService;
+
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
@@ -70,7 +72,7 @@ public class CustomerController {
         }
     }
 
-    @PostMapping("/add/{email}")
+    @PostMapping("/add-restaurant/{email}")
     public ResponseEntity<?> addRestaurantForCustomer(@RequestBody Restaurant restaurant, @PathVariable String email) {
         try {
             Restaurant addedRestaurant = this.customerService.addRestaurantUnderCustomer(restaurant, email);
@@ -82,7 +84,7 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/view/{email}/{id}")
+    @GetMapping("/view-restaurant/{email}/{id}")
     public ResponseEntity<?> fetchRestaurantUnderCustomerById(@PathVariable long id, @PathVariable String email) {
         try {
             Restaurant requestedRestaurant = this.customerService.viewRestaurantUnderCustomer(id, email);
@@ -94,7 +96,7 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/view/all/{email}")
+    @GetMapping("/view-restaurant/all/{email}")
     public ResponseEntity<?> fetchAllRestaurantsUnderCustomer(@PathVariable String email) {
         try {
             List<Restaurant> restaurantList = this.customerService.viewAllRestaurantsUnderCustomer(email);
@@ -106,7 +108,7 @@ public class CustomerController {
         }
     }
 
-    @PutMapping("/update/{email}")
+    @PutMapping("/update-restaurant/{email}")
     public ResponseEntity<?> updateRestaurantForCustomerById(@RequestBody Restaurant restaurant, @PathVariable String email) {
         try {
             Restaurant updatedRestaurant = this.customerService.updateSingleRestaurantForCustomer(restaurant, email);
@@ -118,12 +120,72 @@ public class CustomerController {
         }
     }
 
-    @DeleteMapping("/delete/{email}/{id}")
+    @DeleteMapping("/delete-restaurant/{email}/{id}")
     public ResponseEntity<?> deleteRestaurantForCustomerById(@PathVariable String email, @PathVariable long id) {
         try {
             this.customerService.removeRestaurantForCustomer(id, email);
             return new ResponseEntity<>("Restaurant with ID: " + id + " deleted for customer with Email: " + email, HttpStatus.OK);
         } catch (RestaurantNotFoundException | CustomerNotFoundException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (EmptyDatabaseException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @PostMapping("/add-address/{email}")
+    public ResponseEntity<?> addAddressForCustomer(@RequestBody Address address, @PathVariable String email) {
+        try {
+            Address newlyAddedAddress = this.customerService.addAddressForCustomer(address, email);
+            return new ResponseEntity<>(newlyAddedAddress, HttpStatus.CREATED);
+        } catch (CustomerNotFoundException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (AddressAlreadyPresentException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
+
+    @GetMapping("/view-address/{email}/{flatDetails}")
+    public ResponseEntity<?> viewAddressForCustomerById(@PathVariable String email, @PathVariable String flatDetails) {
+        try {
+            Address requestedAddress = this.customerService.getSingleAddressForCustomer(email, flatDetails);
+            return new ResponseEntity<>(requestedAddress, HttpStatus.FOUND);
+        } catch (AddressNotFoundException | CustomerNotFoundException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (EmptyDatabaseException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @GetMapping("/view-address/all/{email}")
+    public ResponseEntity<?> viewAllAddressesListUnderCustomer(@PathVariable String email) {
+        try {
+            List<Address> addressList = this.customerService.getAllAddressesForCustomer(email);
+            return new ResponseEntity<>(addressList, HttpStatus.FOUND);
+        } catch (EmptyDatabaseException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NO_CONTENT);
+        } catch (CustomerNotFoundException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/update-address/{email}")
+    public ResponseEntity<?> updateAddressForCustomerById(@RequestBody Address address, @PathVariable String email) {
+        try {
+            Address updatedAddress = this.customerService.updateSingleAddressForCustomer(address, email);
+            return new ResponseEntity<>(updatedAddress, HttpStatus.OK);
+        } catch (AddressNotFoundException | CustomerNotFoundException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (EmptyDatabaseException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @DeleteMapping("/delete-address/{email}/{flatDetails}")
+    public ResponseEntity<?> deleteAddressForCustomerById(@PathVariable String email, @PathVariable String flatDetails) {
+        try {
+            this.customerService.deleteSingleAddressForCustomer(email, flatDetails);
+            return new ResponseEntity<>("Address with Flat Number: " + flatDetails + " deleted for customer with Email: " + email, HttpStatus.OK);
+        } catch (AddressNotFoundException | CustomerNotFoundException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
         } catch (EmptyDatabaseException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.NO_CONTENT);

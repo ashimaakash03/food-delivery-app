@@ -1,9 +1,12 @@
 package com.niit.bej.customer.service.service;
 
 import com.niit.bej.customer.service.exception.*;
+import com.niit.bej.customer.service.model.Address;
 import com.niit.bej.customer.service.model.Customer;
 import com.niit.bej.customer.service.model.Restaurant;
+import com.niit.bej.customer.service.repository.AddressRepository;
 import com.niit.bej.customer.service.repository.CustomerRepository;
+import com.niit.bej.customer.service.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +17,14 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-
+    private final AddressRepository addressRepository;
+    private final RestaurantRepository restaurantRepository;
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, AddressRepository addressRepository, RestaurantRepository restaurantRepository) {
         this.customerRepository = customerRepository;
+        this.addressRepository = addressRepository;
+        this.restaurantRepository = restaurantRepository;
     }
 
     @Override
@@ -113,6 +119,34 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Restaurant updateSingleRestaurantForCustomer(Restaurant restaurant, String email) throws EmptyDatabaseException, CustomerNotFoundException, RestaurantNotFoundException {
+        Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
+        if (optionalCustomer.isPresent()) {
+            Customer customerInDatabase = optionalCustomer.get();
+            List<Restaurant> restaurantList = customerInDatabase.getRestaurants();
+            if (restaurantList.isEmpty()) {
+                throw new EmptyDatabaseException("No restaurants found under customer with email: " + email);
+            } else {
+                Restaurant restaurantToBeUpdated = null;
+                for (Restaurant restaurant1 : restaurantList) {
+                    if (restaurant1.getId() == restaurant.getId()) {
+                        restaurantToBeUpdated = restaurant1;
+                        restaurantToBeUpdated.setName(restaurant.getName());
+                        restaurantToBeUpdated.setLocationCity(restaurant.getLocationCity());
+
+
+                    } else {
+                        throw new RestaurantNotFoundException("Restaurant with ID: " + restaurant.getId() + " not found");
+                    }
+                }
+                return this.restaurantRepository.save(restaurantToBeUpdated);
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
+        }
+    }
+
+    @Override
     public Customer updateCustomerDetails(Customer customer, String email) throws CustomerNotFoundException {
         Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
         if (optionalCustomer.isPresent()) {
@@ -155,6 +189,114 @@ public class CustomerServiceImpl implements CustomerService {
             Customer customerInDatabase = optionalCustomer.get();
             this.customerRepository.delete(customerInDatabase);
             return true;
+        } else {
+            throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
+        }
+    }
+
+    @Override
+    public Address addAddressForCustomer(Address address, String email) throws CustomerNotFoundException {
+        Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
+        if (optionalCustomer.isPresent()) {
+            Customer customerInDatabase = optionalCustomer.get();
+            List<Address> addressList = customerInDatabase.getAddresses();
+            addressList.add(address);
+            return address;
+        } else {
+            throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
+        }
+    }
+
+    @Override
+    public Address getSingleAddressForCustomer(String flatDetails, String email) throws EmptyDatabaseException, AddressNotFoundException, CustomerNotFoundException {
+        Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
+        if (optionalCustomer.isPresent()) {
+            Customer customerInDatabase = optionalCustomer.get();
+            List<Address> addressList = customerInDatabase.getAddresses();
+            if (addressList.isEmpty()) {
+                throw new EmptyDatabaseException("No addresses found under customer with email: " + email);
+            } else {
+                Address searchedAddress = null;
+                for (Address address : addressList) {
+                    if (address.getFlatDetails().equals(flatDetails)) {
+                        searchedAddress = address;
+                    } else {
+                        throw new AddressNotFoundException("Address beginning with Flat Details: " + flatDetails + " not found");
+                    }
+                }
+                return searchedAddress;
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
+        }
+    }
+
+    @Override
+    public List<Address> getAllAddressesForCustomer(String email) throws EmptyDatabaseException, CustomerNotFoundException {
+        if (this.customerRepository.findById(email).isPresent()) {
+            Customer customerInDatabase = this.customerRepository.findById(email).get();
+            List<Address> addressList = customerInDatabase.getAddresses();
+            if (addressList.isEmpty()) {
+                throw new EmptyDatabaseException("No addresses found under customer with email: " + email);
+            } else {
+                return addressList;
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
+        }
+    }
+
+    @Override
+    public Address updateSingleAddressForCustomer(Address address, String email) throws EmptyDatabaseException, CustomerNotFoundException, AddressNotFoundException {
+        Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
+        if (optionalCustomer.isPresent()) {
+            Customer customerInDatabase = optionalCustomer.get();
+            List<Address> addressList = customerInDatabase.getAddresses();
+            if (addressList.isEmpty()) {
+                throw new EmptyDatabaseException("No addresses found under customer with email: " + email);
+            } else {
+                Address addressToBeUpdated = null;
+                for (Address address1 : addressList) {
+                    if (address1.getFlatDetails().equals(address.getFlatDetails())) {
+                        addressToBeUpdated = address1;
+
+                        addressToBeUpdated.setFlatDetails(address.getFlatDetails());
+                        addressToBeUpdated.setSoceityName(address.getSoceityName());
+                        addressToBeUpdated.setSector(address.getSector());
+                        addressToBeUpdated.setCityName(address.getCityName());
+                        addressToBeUpdated.setStateName(address.getStateName());
+                        addressToBeUpdated.setPincode(address.getPincode());
+
+                    } else {
+                        throw new AddressNotFoundException("Address beginning with Flat Details: " + address.getFlatDetails() + " not found");
+                    }
+                }
+                return this.addressRepository.save(addressToBeUpdated);
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
+        }
+    }
+
+    @Override
+    public boolean deleteSingleAddressForCustomer(String flatDetails, String email) throws EmptyDatabaseException, AddressNotFoundException, CustomerNotFoundException {
+        Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
+        if (optionalCustomer.isPresent()) {
+            Customer customerInDatabase = optionalCustomer.get();
+            List<Address> addressList = customerInDatabase.getAddresses();
+            if (addressList.isEmpty()) {
+                throw new EmptyDatabaseException("No addresses found under customer with email: " + email);
+            } else {
+                boolean isAddressDeleted = false;
+                for (Address address : addressList) {
+                    if (address.getFlatDetails().equals(flatDetails)) {
+                        isAddressDeleted = addressList.remove(address);
+                    } else {
+                        throw new AddressNotFoundException("Address beginning with Flat Details: " + address.getFlatDetails() + " not found");
+                    }
+                }
+                return isAddressDeleted;
+            }
         } else {
             throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
         }

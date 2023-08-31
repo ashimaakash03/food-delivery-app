@@ -18,6 +18,7 @@ public interface CustomerService {
 
     List<Restaurant> viewAllRestaurantsUnderCustomer(String email) throws EmptyDatabaseException, CustomerNotFoundException;
 
+    Restaurant updateSingleRestaurantForCustomer(Restaurant restaurant, String email) throws EmptyDatabaseException, CustomerNotFoundException, RestaurantNotFoundException;
     Customer updateCustomerDetails(Customer customer, String email) throws CustomerNotFoundException;
 
     Customer fetchACustomer(String email) throws CustomerNotFoundException;
@@ -26,13 +27,13 @@ public interface CustomerService {
 
     boolean deleteCustomer(String email) throws CustomerNotFoundException;
 
-    Address addAddressForCustomer(Address address, String email);
+    Address addAddressForCustomer(Address address, String email) throws CustomerNotFoundException;
 
-    Address getSingleAddressForCustomer(String flatDetails, String email);
+    Address getSingleAddressForCustomer(String flatDetails, String email) throws EmptyDatabaseException, AddressNotFoundException, CustomerNotFoundException;
 
-    List<Address> getAllAddressesForCustomer(String email);
+    List<Address> getAllAddressesForCustomer(String email) throws EmptyDatabaseException, CustomerNotFoundException;
 
-    Address updateSingleAddressForCustomer(Address address, String email);
+    Address updateSingleAddressForCustomer(Address address, String email) throws EmptyDatabaseException, CustomerNotFoundException, AddressNotFoundException;
 
-    boolean deleteSingleAddressForCustomer(String flatDetails, String email);
+    boolean deleteSingleAddressForCustomer(String flatDetails, String email) throws EmptyDatabaseException, AddressNotFoundException, CustomerNotFoundException;
 }

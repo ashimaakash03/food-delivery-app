@@ -10,15 +10,17 @@ public class MenuItem {
     private String name;
     private String category;
     private float price;
+    private int quantity;
 
     public MenuItem() {
     }
 
-    public MenuItem(long id, String name, String category, float price) {
+    public MenuItem(long id, String name, String category, float price, int quantity) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public long getId() {
@@ -53,17 +55,25 @@ public class MenuItem {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MenuItem menuItem = (MenuItem) o;
-        return id == menuItem.id && Float.compare(price, menuItem.price) == 0 && Objects.equals(name, menuItem.name) && Objects.equals(category, menuItem.category);
+        return id == menuItem.id && Float.compare(price, menuItem.price) == 0 && quantity == menuItem.quantity && Objects.equals(name, menuItem.name) && Objects.equals(category, menuItem.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, category, price);
+        return Objects.hash(id, name, category, price, quantity);
     }
 
     @Override
@@ -73,6 +83,7 @@ public class MenuItem {
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }

@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Restaurant addRestaurantUnderUser(Restaurant restaurant, String email) throws CustomerNotFoundException, RestaurantAlreadyPresentException {
+    public Restaurant addRestaurantUnderCustomer(Restaurant restaurant, String email) throws CustomerNotFoundException, RestaurantAlreadyPresentException {
         Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
         if (optionalCustomer.isPresent()) {
             Customer customerInDatabase = optionalCustomer.get();
@@ -49,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean removeRestaurantForUser(long id, String email) throws RestaurantNotFoundException, CustomerNotFoundException, EmptyDatabaseException {
+    public boolean removeRestaurantForCustomer(long id, String email) throws RestaurantNotFoundException, CustomerNotFoundException, EmptyDatabaseException {
         Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
         if (optionalCustomer.isPresent()) {
             Customer customerInDatabase = optionalCustomer.get();
@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Restaurant viewRestaurantUnderUser(long id, String email) throws RestaurantNotFoundException, CustomerNotFoundException, EmptyDatabaseException {
+    public Restaurant viewRestaurantUnderCustomer(long id, String email) throws RestaurantNotFoundException, CustomerNotFoundException, EmptyDatabaseException {
         Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
         if (optionalCustomer.isPresent()) {
             Customer customerInDatabase = optionalCustomer.get();
@@ -97,7 +97,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Restaurant> viewAllRestaurantsUnderUser(String email) throws EmptyDatabaseException, CustomerNotFoundException {
+    public List<Restaurant> viewAllRestaurantsUnderCustomer(String email) throws EmptyDatabaseException, CustomerNotFoundException {
         Optional<Customer> optionalCustomer = this.customerRepository.findById(email);
         if (optionalCustomer.isPresent()) {
             Customer customerInDatabase = optionalCustomer.get();

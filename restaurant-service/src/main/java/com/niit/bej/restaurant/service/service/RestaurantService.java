@@ -2,6 +2,7 @@ package com.niit.bej.restaurant.service.service;
 
 import com.niit.bej.restaurant.service.exception.RestaurantAlreadyExistException;
 import com.niit.bej.restaurant.service.exception.RestaurantNotFoundException;
+import com.niit.bej.restaurant.service.exception.RestaurantsNotFoundException;
 import com.niit.bej.restaurant.service.model.Restaurant;
 
 import java.util.List;
@@ -15,9 +16,9 @@ public interface RestaurantService {
 
     Restaurant updateRestaurant(Restaurant restaurant) throws RestaurantNotFoundException;
 
-    List<Restaurant> getRestaurants(int[] restaurantId) throws RestaurantNotFoundException;
+    List<Restaurant> getRestaurants(int[] restaurantId) throws RestaurantsNotFoundException;
 
     boolean deleteRestaurant(int restaurantId) throws RestaurantNotFoundException;
 
-    List<Restaurant> getRestaurantByEmail(String email) throws RestaurantNotFoundException;
+    List<Restaurant> getRestaurantsByEmail(String email) throws RestaurantsNotFoundException;
 }

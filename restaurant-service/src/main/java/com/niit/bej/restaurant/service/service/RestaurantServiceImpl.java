@@ -2,6 +2,7 @@ package com.niit.bej.restaurant.service.service;
 
 import com.niit.bej.restaurant.service.exception.RestaurantAlreadyExistException;
 import com.niit.bej.restaurant.service.exception.RestaurantNotFoundException;
+import com.niit.bej.restaurant.service.exception.RestaurantsNotFoundException;
 import com.niit.bej.restaurant.service.model.Restaurant;
 import com.niit.bej.restaurant.service.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<Restaurant> getRestaurants(int[] restaurantIds) throws RestaurantNotFoundException {
+    public List<Restaurant> getRestaurants(int[] restaurantIds) throws RestaurantsNotFoundException {
         List<Restaurant> restaurantList = new ArrayList<>();
 
         for (int id : restaurantIds) {
@@ -68,7 +69,7 @@ public class RestaurantServiceImpl implements RestaurantService {
                 Restaurant restaurant = optionalRestaurant.get();
                 restaurantList.add(restaurant);
             } else {
-                throw new RestaurantNotFoundException("Restaurant id " + id + " not found");
+                throw new RestaurantsNotFoundException("Restaurant id " + id + " not found");
             }
         }
         return restaurantList;
@@ -80,7 +81,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<Restaurant> getRestaurantByEmail(String email) throws RestaurantNotFoundException {
+    public List<Restaurant> getRestaurantsByEmail(String email) throws RestaurantsNotFoundException {
         return null;
     }
 }

@@ -1,1 +1,12 @@
+version: "3"
+
 services:
+  mysql-databse-service:
+    image: mysql
+    container_name: mysql-container
+    ports:
+      - "3307:3306"
+    networks: [ foodie-app-network ]
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYQSL_ALLOW_EMPTY_PASSWORD: "yes"

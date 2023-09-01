@@ -1,29 +1,26 @@
 package com.niit.bej.restaurant.service.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "restaurant")
 public class Restaurant {
+    @MongoId
     private int restaurantId;
-    private String email;
     private String restaurantName;
     private String city;
-    private byte[] url;
     private List<Menu> menuList;
 
     public Restaurant() {
     }
 
-    public Restaurant(int restaurantId, String email, String restaurantName, String city, byte[] url, List<Menu> menuList) {
+    public Restaurant(int restaurantId, String restaurantName, String city, List<Menu> menuList) {
         this.restaurantId = restaurantId;
-        this.email = email;
         this.restaurantName = restaurantName;
         this.city = city;
-        this.url = url;
         this.menuList = menuList;
     }
 
@@ -33,14 +30,6 @@ public class Restaurant {
 
     public void setRestaurantId(int restaurantId) {
         this.restaurantId = restaurantId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getRestaurantName() {
@@ -59,14 +48,6 @@ public class Restaurant {
         this.city = city;
     }
 
-    public byte[] getUrl() {
-        return url;
-    }
-
-    public void setUrl(byte[] url) {
-        this.url = url;
-    }
-
     public List<Menu> getMenuList() {
         return menuList;
     }
@@ -79,36 +60,21 @@ public class Restaurant {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Restaurant that = (Restaurant) o;
-
-        if (restaurantId != that.restaurantId) return false;
-        if (!Objects.equals(email, that.email)) return false;
-        if (!Objects.equals(restaurantName, that.restaurantName)) return false;
-        if (!Objects.equals(city, that.city)) return false;
-        if (!Arrays.equals(url, that.url)) return false;
-        return Objects.equals(menuList, that.menuList);
+        return restaurantId == that.restaurantId && Objects.equals(restaurantName, that.restaurantName) && Objects.equals(city, that.city) && Objects.equals(menuList, that.menuList);
     }
 
     @Override
     public int hashCode() {
-        int result = restaurantId;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (restaurantName != null ? restaurantName.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(url);
-        result = 31 * result + (menuList != null ? menuList.hashCode() : 0);
-        return result;
+        return Objects.hash(restaurantId, restaurantName, city, menuList);
     }
 
     @Override
     public String toString() {
         return "Restaurant{" +
                 "restaurantId=" + restaurantId +
-                ", email='" + email + '\'' +
                 ", restaurantName='" + restaurantName + '\'' +
                 ", city='" + city + '\'' +
-                ", url=" + Arrays.toString(url) +
                 ", menuList=" + menuList +
                 '}';
     }

@@ -77,7 +77,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public boolean deleteRestaurant(int restaurantId) throws RestaurantNotFoundException {
-        return false;
+        Restaurant restaurant = new Restaurant();
+        if (restaurantRepository.findById(restaurantId).isEmpty()) {
+            throw new RestaurantNotFoundException(" Restaurant not found in the database!");
+        } else {
+            restaurant = restaurantRepository.findById(restaurantId).get();
+            restaurantRepository.delete(restaurant);
+        }
+        return true;
     }
 
     @Override

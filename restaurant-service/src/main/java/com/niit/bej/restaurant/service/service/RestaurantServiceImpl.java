@@ -17,7 +17,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant addRestaurant(Restaurant restaurant, byte[] bytes) throws RestaurantAlreadyExistException {
-        return null;
+        if (restaurantRepository.findById(restaurant.getRestaurantId()).isPresent()){
+            throw new RestaurantAlreadyExistException("Restaurant already exists!!!");
+        }else {
+            restaurant.setUrl(bytes);
+            restaurantRepository.save(restaurant);
+            System.out.println("Restaurant saved successfully!!");
+        }
+        return restaurant;
     }
 
     @Override

@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  mysql-databse-service:
+  mysql-database-service:
     image: mysql
     container_name: mysql-container
     ports:
@@ -10,3 +10,16 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYQSL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  customer-auth-service:
+    build: /customer-auth
+    container_name: customer-auth-service-container
+    ports:
+      - "8081:8081"
+    networks: [ foodie-app-network ]
+    depends_on: [ mysql-database-service ]
+    restart: always
+
+networks:
+  foodie-app-network:
+    driver: bridge

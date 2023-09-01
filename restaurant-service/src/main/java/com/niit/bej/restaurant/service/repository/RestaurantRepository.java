@@ -14,5 +14,5 @@ public interface RestaurantRepository extends MongoRepository<Restaurant, Intege
 
     Restaurant findByEmail(String email);
     Restaurant findByCity(String city);
-
+    List<Restaurant> findByEmailContaining(String email);
 }

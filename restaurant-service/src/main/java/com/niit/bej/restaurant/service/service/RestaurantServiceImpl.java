@@ -7,7 +7,10 @@ import com.niit.bej.restaurant.service.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -56,8 +59,19 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<Restaurant> getRestaurant(int[] restaurantId) throws RestaurantNotFoundException {
-        return null;
+    public List<Restaurant> getRestaurants(int[] restaurantIds) throws RestaurantNotFoundException {
+        List<Restaurant> restaurantList = new ArrayList<>();
+
+        for (int id : restaurantIds) {
+            Optional<Restaurant> optionalRestaurant = restaurantRepository.findById(id);
+            if (optionalRestaurant.isPresent()) {
+                Restaurant restaurant = optionalRestaurant.get();
+                restaurantList.add(restaurant);
+            } else {
+                throw new RestaurantNotFoundException("Restaurant id " + id + " not found");
+            }
+        }
+        return restaurantList;
     }
 
     @Override

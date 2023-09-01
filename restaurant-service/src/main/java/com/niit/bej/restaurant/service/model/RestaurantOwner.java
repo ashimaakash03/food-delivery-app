@@ -97,4 +97,15 @@ public class RestaurantOwner {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "RestaurantOwner{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", ownerName='" + ownerName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", gstNumber='" + gstNumber + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

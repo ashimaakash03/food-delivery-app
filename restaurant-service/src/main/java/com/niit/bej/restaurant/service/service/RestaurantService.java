@@ -15,7 +15,7 @@ public interface RestaurantService {
 
     Restaurant updateRestaurant(Restaurant restaurant) throws RestaurantNotFoundException;
 
-    List<Restaurant> getRestaurant(int[] restaurantId) throws RestaurantNotFoundException;
+    List<Restaurant> getRestaurants(int[] restaurantId) throws RestaurantNotFoundException;
 
     boolean deleteRestaurant(int restaurantId) throws RestaurantNotFoundException;
 

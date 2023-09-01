@@ -1,4 +1,11 @@
 package com.niit.bej.restaurant.service.exception;
 
-public class EmptyDatabaseException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(reason = "Nothing found in database", code = HttpStatus.NO_CONTENT)
+public class EmptyDatabaseException extends Exception {
+    public EmptyDatabaseException(String message) {
+        super(message);
+    }
 }

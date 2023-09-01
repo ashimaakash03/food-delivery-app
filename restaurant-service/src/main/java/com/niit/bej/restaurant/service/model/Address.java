@@ -1,5 +1,7 @@
 package com.niit.bej.restaurant.service.model;
 
+import java.util.Objects;
+
 public class Address {
     private int houseNumber;
     private String roadName, city;
@@ -45,6 +47,28 @@ public class Address {
 
     public void setPostcode(Long postcode) {
         this.postcode = postcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Address address = (Address) o;
+
+        if (houseNumber != address.houseNumber) return false;
+        if (!Objects.equals(roadName, address.roadName)) return false;
+        if (!Objects.equals(city, address.city)) return false;
+        return Objects.equals(postcode, address.postcode);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = houseNumber;
+        result = 31 * result + (roadName != null ? roadName.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (postcode != null ? postcode.hashCode() : 0);
+        return result;
     }
 
 }

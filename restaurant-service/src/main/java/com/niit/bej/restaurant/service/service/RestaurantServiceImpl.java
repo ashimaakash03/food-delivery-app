@@ -2,10 +2,21 @@ package com.niit.bej.restaurant.service.service;
 
 import com.niit.bej.restaurant.service.model.Menu;
 import com.niit.bej.restaurant.service.model.Restaurant;
+import com.niit.bej.restaurant.service.repository.RestaurantRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RestaurantServiceImpl implements RestaurantService {
+    private final RestaurantRepository restaurantRepository;
+
+    @Autowired
+    public RestaurantServiceImpl(RestaurantRepository restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
+    }
+
     @Override
     public Restaurant addRestaurant(Restaurant restaurant) {
         return null;

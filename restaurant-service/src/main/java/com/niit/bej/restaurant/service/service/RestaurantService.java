@@ -18,4 +18,6 @@ public interface RestaurantService {
     List<Restaurant> getRestaurant(int[] restaurantId) throws RestaurantNotFoundException;
 
     boolean deleteRestaurant(int restaurantId) throws RestaurantNotFoundException;
+
+    List<Restaurant> getRestaurantByEmail(String email) throws RestaurantNotFoundException;
 }

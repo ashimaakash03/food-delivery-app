@@ -4,8 +4,14 @@ import com.niit.bej.restaurant.service.exception.RestaurantAlreadyExistException
 import com.niit.bej.restaurant.service.exception.RestaurantNotFoundException;
 import com.niit.bej.restaurant.service.model.Restaurant;
 
+import java.util.List;
+
 public interface RestaurantService {
-    public Restaurant addRestaurant(Restaurant restaurant, byte[] bytes) throws RestaurantAlreadyExistException;
-    public Restaurant findByName(String restaurantName) throws RestaurantNotFoundException;
+    Restaurant addRestaurant(Restaurant restaurant, byte[] bytes) throws RestaurantAlreadyExistException;
+
+    Restaurant findByName(String restaurantName) throws RestaurantNotFoundException;
+
+    List<Restaurant> getAllRestaurants();
+
 
 }

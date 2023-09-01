@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 FROM openjdk
 
-LABEL authors="AXE"
+LABEL authors="AXE, Ashim"
 
 COPY target/*.jar /customer-auth-service.jar
 

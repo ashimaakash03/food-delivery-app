@@ -1,24 +1,34 @@
 package com.niit.bej.restaurant.service.service;
 
-import com.niit.bej.restaurant.service.exception.RestaurantAlreadyExistException;
-import com.niit.bej.restaurant.service.exception.RestaurantNotFoundException;
-import com.niit.bej.restaurant.service.exception.RestaurantsNotFoundException;
+import com.niit.bej.restaurant.service.model.Menu;
 import com.niit.bej.restaurant.service.model.Restaurant;
 
 import java.util.List;
 
 public interface RestaurantService {
-    Restaurant addRestaurant(Restaurant restaurant, byte[] bytes) throws RestaurantAlreadyExistException;
+    Restaurant addRestaurant(Restaurant restaurant);
 
-    Restaurant findByName(String restaurantName) throws RestaurantNotFoundException;
+    List<Restaurant> findAllRestaurantsByName(String restaurantName);
 
-    List<Restaurant> getAllRestaurants();
+    List<Restaurant> findAllRestaurants();
 
-    Restaurant updateRestaurant(Restaurant restaurant) throws RestaurantNotFoundException;
+    List<Restaurant> findAllRestaurantsByCity(String city);
 
-    List<Restaurant> getRestaurants(int[] restaurantId) throws RestaurantsNotFoundException;
+    Restaurant updateRestaurantById(Restaurant restaurant, int restaurantId);
 
-    boolean deleteRestaurant(int restaurantId) throws RestaurantNotFoundException;
+    boolean deleteRestaurantById(int restaurantId);
 
-    List<Restaurant> getRestaurantsByEmail(String email) throws RestaurantsNotFoundException;
+    Menu addMenuItem(Menu menu);
+
+    List<Menu> findAllItemsUnderCategory(String category);
+
+    Menu findItemByName(String itemName);
+
+    List<Menu> findAllMenuItems();
+
+    Menu updateMenuItemDetails(Menu menu);
+
+    boolean deleteMenuItemById(long id);
+
+    boolean deleteMenuItemByName(String itemName);
 }

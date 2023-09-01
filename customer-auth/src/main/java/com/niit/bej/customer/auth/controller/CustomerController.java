@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/home")
 public class CustomerController {
     private final CustomerService customerService;
     private final SecurityTokenGenerator securityTokenGenerator;

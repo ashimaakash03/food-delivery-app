@@ -71,4 +71,13 @@ public class Address {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Address{" +
+                "houseNumber=" + houseNumber +
+                ", roadName='" + roadName + '\'' +
+                ", city='" + city + '\'' +
+                ", postcode=" + postcode +
+                '}';
+    }
 }

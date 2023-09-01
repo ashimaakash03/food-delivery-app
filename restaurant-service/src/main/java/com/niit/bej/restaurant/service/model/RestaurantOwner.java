@@ -1,6 +1,7 @@
 package com.niit.bej.restaurant.service.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class RestaurantOwner {
     private String email;
@@ -69,4 +70,31 @@ public class RestaurantOwner {
     public void setAddress(List<Address> address) {
         this.address = address;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RestaurantOwner that = (RestaurantOwner) o;
+
+        if (!Objects.equals(email, that.email)) return false;
+        if (!Objects.equals(password, that.password)) return false;
+        if (!Objects.equals(ownerName, that.ownerName)) return false;
+        if (!Objects.equals(phoneNumber, that.phoneNumber)) return false;
+        if (!Objects.equals(gstNumber, that.gstNumber)) return false;
+        return Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = email != null ? email.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (ownerName != null ? ownerName.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (gstNumber != null ? gstNumber.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        return result;
+    }
+
 }

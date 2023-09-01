@@ -13,5 +13,6 @@ public interface RestaurantRepository extends MongoRepository<Restaurant, Intege
     Restaurant findByRestaurantName(String restaurantName);
 
     Restaurant findByEmail(String email);
+    Restaurant findByCity(String city);
 
 }

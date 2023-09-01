@@ -10,6 +10,10 @@ import java.util.Map;
 
 @Service
 public class JwtSecurityTokenGenerator implements SecurityTokenGenerator {
+    public static final int SECONDS = 60;
+    public static final int MINUTES = 60;
+    public static final int DURATION = 10;
+    public static final int MILLISECOND = 1000;
     @Override
     public Map<String, String> generateToken(Customer customer) {
         String jwtToken = Jwts.builder().setIssuedAt(new Date())

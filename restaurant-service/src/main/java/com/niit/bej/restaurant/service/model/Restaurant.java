@@ -98,4 +98,15 @@ public class Restaurant {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "restaurantId=" + restaurantId +
+                ", email='" + email + '\'' +
+                ", restaurantName='" + restaurantName + '\'' +
+                ", city='" + city + '\'' +
+                ", url=" + Arrays.toString(url) +
+                ", menuList=" + menuList +
+                '}';
+    }
 }

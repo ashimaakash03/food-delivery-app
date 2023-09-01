@@ -1,7 +1,10 @@
 package com.niit.bej.restaurant.service.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Objects;
 
+@Document
 public class Address {
     private int houseNumber;
     private String roadName, city;

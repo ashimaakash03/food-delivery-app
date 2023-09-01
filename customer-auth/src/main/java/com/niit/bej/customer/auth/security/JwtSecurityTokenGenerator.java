@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -16,11 +17,17 @@ public class JwtSecurityTokenGenerator implements SecurityTokenGenerator {
     public static final int MILLISECOND = 1000;
     @Override
     public Map<String, String> generateToken(Customer customer) {
-        String jwtToken = Jwts.builder().setIssuedAt(new Date())
-                .setSubject(customer.getFullname()).signWith(SignatureAlgorithm.HS256, "password")
+        HashMap<String, Object> claims = new HashMap<>();
+        claims.put("email", customer.getEmail());
+        String token = Jwts.builder()
+                .setIssuedAt(new Date())
+                .setIssuer("user-auth-service")
+                .setExpiration(new Date(System.currentTimeMillis() + MILLISECOND * SECONDS * MINUTES * DURATION))
+                .setClaims(claims)
+                .setSubject(customer.getEmail())
+                .signWith(SignatureAlgorithm.HS256, "password")
                 .compact();
 
-        return Map.of("token", jwtToken,
-                "message", customer.getFullname() + " logged in");
+        return Map.of("token", token, "message", customer.getEmail() + " logged in successfully!");
     }
 }

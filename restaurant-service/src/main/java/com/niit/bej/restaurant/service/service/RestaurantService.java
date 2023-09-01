@@ -14,4 +14,6 @@ public interface RestaurantService {
     List<Restaurant> getAllRestaurants();
 
     Restaurant updateRestaurant(Restaurant restaurant) throws RestaurantNotFoundException;
+
+    List<Restaurant> getRestaurant(int[] restaurantId) throws RestaurantNotFoundException;
 }

@@ -29,7 +29,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant findByName(String restaurantName) throws RestaurantNotFoundException {
-        return null;
+        Restaurant restaurant = restaurantRepository.findByRestaurantName(restaurantName);
+        if (restaurant.getRestaurantName().equals(restaurantName)){
+            return restaurant;
+        }else {
+            throw new RestaurantNotFoundException("Restaurant does not exist in the database!!");
+        }
     }
 
     @Override

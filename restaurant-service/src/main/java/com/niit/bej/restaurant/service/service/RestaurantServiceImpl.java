@@ -17,9 +17,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant addRestaurant(Restaurant restaurant, byte[] bytes) throws RestaurantAlreadyExistException {
-        if (restaurantRepository.findById(restaurant.getRestaurantId()).isPresent()){
+        if (restaurantRepository.findById(restaurant.getRestaurantId()).isPresent()) {
             throw new RestaurantAlreadyExistException("Restaurant already exists!!!");
-        }else {
+        } else {
             restaurant.setUrl(bytes);
             restaurantRepository.save(restaurant);
             System.out.println("Restaurant saved successfully!!");
@@ -30,9 +30,9 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant findByName(String restaurantName) throws RestaurantNotFoundException {
         Restaurant restaurant = restaurantRepository.findByRestaurantName(restaurantName);
-        if (restaurant.getRestaurantName().equals(restaurantName)){
+        if (restaurant.getRestaurantName().equals(restaurantName)) {
             return restaurant;
-        }else {
+        } else {
             throw new RestaurantNotFoundException("Restaurant does not exist in the database!!");
         }
     }
@@ -44,7 +44,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant updateRestaurant(Restaurant restaurant) throws RestaurantNotFoundException {
-        return null;
+        if (restaurantRepository.findById(restaurant.getRestaurantId()).isEmpty()) {
+            throw new RestaurantNotFoundException("Restaurant not found in the database :(");
+        } else {
+            Restaurant restaurantToBeUpdated = restaurantRepository.findById(restaurant.getRestaurantId()).get();
+            if (restaurant.getUrl() == null) {
+                restaurant.setUrl(restaurantToBeUpdated.getUrl());
+            }
+            return restaurantRepository.save(restaurant);
+        }
     }
 
     @Override

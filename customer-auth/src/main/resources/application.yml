@@ -5,11 +5,11 @@ server:
 
 spring:
   application:
-    name: user-auth-service
+    name: customer-auth-service
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-container:3306/user_auth_db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql-container:3306/customer_auth_db?createDatabaseIfNotExist=true
     username: root
     password: password
 

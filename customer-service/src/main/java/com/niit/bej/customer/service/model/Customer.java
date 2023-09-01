@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.util.List;
 import java.util.Objects;
 
-@Document
+@Document(collection = "customers")
 public class Customer {
     private String fullname;
     private String contact;

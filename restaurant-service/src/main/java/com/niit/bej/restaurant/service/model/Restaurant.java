@@ -1,9 +1,12 @@
 package com.niit.bej.restaurant.service.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@Document
 public class Restaurant {
     private int restaurantId;
     private String email;

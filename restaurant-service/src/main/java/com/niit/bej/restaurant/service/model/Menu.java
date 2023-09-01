@@ -51,4 +51,11 @@ public class Menu {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "itemName='" + itemName + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

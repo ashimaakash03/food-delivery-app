@@ -3,8 +3,8 @@ FROM openjdk
 
 LABEL authors="AXE"
 
-COPY target/*.jar /user-auth-service.jar
+COPY target/*.jar /customer-auth-service.jar
 
 EXPOSE 8081
 
-ENTRYPOINT ["java", "-jar", "/user-auth-service.jar"]
+ENTRYPOINT ["java", "-jar", "/customer-auth-service.jar"]

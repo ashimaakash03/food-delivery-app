@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-@Document
+@Document(collection = "restaurant")
 public class Restaurant {
     private int restaurantId;
     private String email;

@@ -1,8 +1,11 @@
 package com.niit.bej.restaurant.service.model;
 
+import org.springframework.data.mongodb.core.mapping.MongoId;
+
 import java.util.Objects;
 
 public class Menu {
+    @MongoId
     private long id;
     private String itemName;
     private String category;

@@ -21,7 +21,7 @@ public class JwtSecurityTokenGenerator implements SecurityTokenGenerator {
         claims.put("email", customer.getEmail());
         String token = Jwts.builder()
                 .setIssuedAt(new Date())
-                .setIssuer("user-auth-service")
+                .setIssuer("customer-auth-service")
                 .setExpiration(new Date(System.currentTimeMillis() + MILLISECOND * SECONDS * MINUTES * DURATION))
                 .setClaims(claims)
                 .setSubject(customer.getEmail())

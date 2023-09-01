@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: user-auth-service
+    name: customer-auth-service
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

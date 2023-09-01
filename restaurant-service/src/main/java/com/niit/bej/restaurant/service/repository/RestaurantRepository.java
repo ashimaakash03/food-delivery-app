@@ -8,4 +8,6 @@ import java.util.List;
 public interface RestaurantRepository extends MongoRepository<Restaurant, Integer> {
     List<Restaurant> findByRestaurantNameContaining(String restaurantName);
 
+    Restaurant findByRestaurantId(int restaurantId);
+
 }

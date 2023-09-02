@@ -2,6 +2,8 @@ package com.niit.bej.order.service.model;
 
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.Objects;
+
 public class Customer {
     @MongoId
     private long id;
@@ -49,5 +51,28 @@ public class Customer {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id == customer.id && Objects.equals(fullName, customer.fullName) && Objects.equals(email, customer.email) && Objects.equals(contact, customer.contact);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fullName, email, contact);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", contact='" + contact + '\'' +
+                '}';
     }
 }

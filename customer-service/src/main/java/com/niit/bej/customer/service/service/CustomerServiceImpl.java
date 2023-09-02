@@ -127,19 +127,16 @@ public class CustomerServiceImpl implements CustomerService {
             if (restaurantList.isEmpty()) {
                 throw new EmptyDatabaseException("No restaurants found under customer with email: " + email);
             } else {
-                Restaurant restaurantToBeUpdated = null;
-                for (Restaurant restaurant1 : restaurantList) {
-                    if (restaurant1.getId() == restaurant.getId()) {
-                        restaurantToBeUpdated = restaurant1;
-                        restaurantToBeUpdated.setName(restaurant.getName());
-                        restaurantToBeUpdated.setLocationCity(restaurant.getLocationCity());
+                Restaurant updatedRestaurant = null;
+                if (restaurantList.contains(restaurant)) {
+                    Restaurant restaurantToBeUpdated = new Restaurant();
 
+                    restaurantToBeUpdated.setName(restaurant.getName());
+                    restaurantToBeUpdated.setLocationCity(restaurant.getLocationCity());
 
-                    } else {
-                        throw new RestaurantNotFoundException("Restaurant with ID: " + restaurant.getId() + " not found");
-                    }
+                    updatedRestaurant = restaurantToBeUpdated;
                 }
-                return this.restaurantRepository.save(restaurantToBeUpdated);
+                return updatedRestaurant;
             }
         } else {
             throw new CustomerNotFoundException("Customer with Email: " + email + " not present");
@@ -258,23 +255,20 @@ public class CustomerServiceImpl implements CustomerService {
             if (addressList.isEmpty()) {
                 throw new EmptyDatabaseException("No addresses found under customer with email: " + email);
             } else {
-                Address addressToBeUpdated = null;
-                for (Address address1 : addressList) {
-                    if (address1.getFlatDetails().equals(address.getFlatDetails())) {
-                        addressToBeUpdated = address1;
+                Address updatedAddress = null;
+                if (addressList.contains(address)) {
+                    Address addressToBeUpdated = new Address();
 
-                        addressToBeUpdated.setFlatDetails(address.getFlatDetails());
-                        addressToBeUpdated.setSoceityName(address.getSoceityName());
-                        addressToBeUpdated.setSector(address.getSector());
-                        addressToBeUpdated.setCityName(address.getCityName());
-                        addressToBeUpdated.setStateName(address.getStateName());
-                        addressToBeUpdated.setPincode(address.getPincode());
+                    addressToBeUpdated.setFlatDetails(address.getFlatDetails());
+                    addressToBeUpdated.setSoceityName(address.getSoceityName());
+                    addressToBeUpdated.setSector(address.getSector());
+                    addressToBeUpdated.setCityName(address.getCityName());
+                    addressToBeUpdated.setStateName(address.getStateName());
+                    addressToBeUpdated.setPincode(address.getPincode());
 
-                    } else {
-                        throw new AddressNotFoundException("Address beginning with Flat Details: " + address.getFlatDetails() + " not found");
-                    }
+                    updatedAddress = addressToBeUpdated;
                 }
-                return this.addressRepository.save(addressToBeUpdated);
+                return updatedAddress;
             }
         } else {
             throw new CustomerNotFoundException("Customer with Email: " + email + " not present");

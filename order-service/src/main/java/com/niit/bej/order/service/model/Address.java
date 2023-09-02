@@ -22,4 +22,52 @@ public class Address {
         this.stateName = stateName;
         this.pincode = pincode;
     }
+
+    public String getFlatDetails() {
+        return flatDetails;
+    }
+
+    public void setFlatDetails(String flatDetails) {
+        this.flatDetails = flatDetails;
+    }
+
+    public String getSoceityName() {
+        return soceityName;
+    }
+
+    public void setSoceityName(String soceityName) {
+        this.soceityName = soceityName;
+    }
+
+    public int getSector() {
+        return sector;
+    }
+
+    public void setSector(int sector) {
+        this.sector = sector;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getStateName() {
+        return stateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+    public long getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(long pincode) {
+        this.pincode = pincode;
+    }
 }

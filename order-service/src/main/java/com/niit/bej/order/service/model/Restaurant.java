@@ -20,4 +20,36 @@ public class Restaurant {
         this.city = city;
         this.order = order;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public List<Item> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Item> order) {
+        this.order = order;
+    }
 }

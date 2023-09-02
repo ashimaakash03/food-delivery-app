@@ -12,4 +12,14 @@ public class Order {
     private Customer customer;
     private Address deliveryAddress;
     private List<Restaurant> restaurant;
+
+    public Order() {
+    }
+
+    public Order(long id, Customer customer, Address deliveryAddress, List<Restaurant> restaurant) {
+        this.id = id;
+        this.customer = customer;
+        this.deliveryAddress = deliveryAddress;
+        this.restaurant = restaurant;
+    }
 }

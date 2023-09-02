@@ -10,4 +10,16 @@ public class Address {
     private String cityName;
     private String stateName;
     private long pincode;
+
+    public Address() {
+    }
+
+    public Address(String flatDetails, String soceityName, int sector, String cityName, String stateName, long pincode) {
+        this.flatDetails = flatDetails;
+        this.soceityName = soceityName;
+        this.sector = sector;
+        this.cityName = cityName;
+        this.stateName = stateName;
+        this.pincode = pincode;
+    }
 }

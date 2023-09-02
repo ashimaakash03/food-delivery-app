@@ -2,6 +2,8 @@ package com.niit.bej.order.service.model;
 
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.Objects;
+
 public class Item {
     @MongoId
     private long id;
@@ -49,5 +51,28 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return id == item.id && Double.compare(price, item.price) == 0 && Objects.equals(name, item.name) && Objects.equals(category, item.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, category, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

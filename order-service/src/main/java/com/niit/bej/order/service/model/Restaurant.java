@@ -3,6 +3,7 @@ package com.niit.bej.order.service.model;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Restaurant {
     @MongoId
@@ -51,5 +52,28 @@ public class Restaurant {
 
     public void setOrder(List<Item> order) {
         this.order = order;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Restaurant that = (Restaurant) o;
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(city, that.city) && Objects.equals(order, that.order);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, city, order);
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", order=" + order +
+                '}';
     }
 }

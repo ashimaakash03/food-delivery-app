@@ -2,6 +2,8 @@ package com.niit.bej.order.service.model;
 
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.Objects;
+
 public class Address {
     @MongoId
     private String flatDetails;
@@ -69,5 +71,30 @@ public class Address {
 
     public void setPincode(long pincode) {
         this.pincode = pincode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return sector == address.sector && pincode == address.pincode && Objects.equals(flatDetails, address.flatDetails) && Objects.equals(soceityName, address.soceityName) && Objects.equals(cityName, address.cityName) && Objects.equals(stateName, address.stateName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(flatDetails, soceityName, sector, cityName, stateName, pincode);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "flatDetails='" + flatDetails + '\'' +
+                ", soceityName='" + soceityName + '\'' +
+                ", sector=" + sector +
+                ", cityName='" + cityName + '\'' +
+                ", stateName='" + stateName + '\'' +
+                ", pincode=" + pincode +
+                '}';
     }
 }

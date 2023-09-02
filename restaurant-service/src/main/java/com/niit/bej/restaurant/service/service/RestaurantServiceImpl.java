@@ -188,12 +188,44 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public boolean deleteMenuItemById(long id) {
-        return false;
+    public boolean deleteMenuItemById(int restaurantId, long id) throws ItemNotFoundException, RestaurantNotFoundException {
+        Optional<Restaurant> optionalRestaurant = this.restaurantRepository.findById(restaurantId);
+        if (optionalRestaurant.isPresent()) {
+            Restaurant requiredRestaurant = optionalRestaurant.get();
+            List<Menu> menuListOfRestaurant = requiredRestaurant.getMenuList();
+            boolean result = false;
+            for (Menu menu : menuListOfRestaurant) {
+                if (menu.getId() == id) {
+                    menuListOfRestaurant.remove(menu);
+                    result = true;
+                } else {
+                    throw new ItemNotFoundException("Item with ID: " + id + " not found");
+                }
+            }
+            return result;
+        } else {
+            throw new RestaurantNotFoundException("Searched restaurant with ID: " + restaurantId + "not found");
+        }
     }
 
     @Override
-    public boolean deleteMenuItemByName(String itemName) {
-        return false;
+    public boolean deleteMenuItemByName(int restaurantId, String itemName) throws RestaurantNotFoundException, ItemNotFoundException {
+        Optional<Restaurant> optionalRestaurant = this.restaurantRepository.findById(restaurantId);
+        if (optionalRestaurant.isPresent()) {
+            Restaurant requiredRestaurant = optionalRestaurant.get();
+            List<Menu> menuListOfRestaurant = requiredRestaurant.getMenuList();
+            boolean result = false;
+            for (Menu menu : menuListOfRestaurant) {
+                if (menu.getItemName().equals(itemName)) {
+                    menuListOfRestaurant.remove(menu);
+                    result = true;
+                } else {
+                    throw new ItemNotFoundException("Item with name: " + itemName + " not found");
+                }
+            }
+            return result;
+        } else {
+            throw new RestaurantNotFoundException("Searched restaurant with ID: " + restaurantId + "not found");
+        }
     }
 }

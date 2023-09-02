@@ -29,7 +29,7 @@ public interface RestaurantService {
 
     Menu updateMenuItemDetails(int restaurantId, Menu menu) throws EmptyDatabaseException, RestaurantNotFoundException;
 
-    boolean deleteMenuItemById(long id);
+    boolean deleteMenuItemById(int restaurantId, long id) throws ItemNotFoundException, RestaurantNotFoundException;
 
-    boolean deleteMenuItemByName(String itemName);
+    boolean deleteMenuItemByName(int restaurantId, String itemName) throws RestaurantNotFoundException, ItemNotFoundException;
 }

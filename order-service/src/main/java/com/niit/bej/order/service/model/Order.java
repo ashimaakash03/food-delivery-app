@@ -22,4 +22,36 @@ public class Order {
         this.deliveryAddress = deliveryAddress;
         this.restaurant = restaurant;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Address getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(Address deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    public List<Restaurant> getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(List<Restaurant> restaurant) {
+        this.restaurant = restaurant;
+    }
 }

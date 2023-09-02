@@ -4,9 +4,7 @@ import com.niit.bej.customer.service.exception.*;
 import com.niit.bej.customer.service.model.Address;
 import com.niit.bej.customer.service.model.Customer;
 import com.niit.bej.customer.service.model.Restaurant;
-import com.niit.bej.customer.service.repository.AddressRepository;
 import com.niit.bej.customer.service.repository.CustomerRepository;
-import com.niit.bej.customer.service.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +15,10 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final AddressRepository addressRepository;
-    private final RestaurantRepository restaurantRepository;
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository, AddressRepository addressRepository, RestaurantRepository restaurantRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
-        this.addressRepository = addressRepository;
-        this.restaurantRepository = restaurantRepository;
     }
 
     @Override

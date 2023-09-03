@@ -5,28 +5,18 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.util.Objects;
 
 public class Customer {
-    @MongoId
-    private long id;
     private String fullName;
+    @MongoId
     private String email;
     private String contact;
 
     public Customer() {
     }
 
-    public Customer(long id, String fullName, String email, String contact) {
-        this.id = id;
+    public Customer(String fullName, String email, String contact) {
         this.fullName = fullName;
         this.email = email;
         this.contact = contact;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFullName() {
@@ -58,19 +48,18 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return id == customer.id && Objects.equals(fullName, customer.fullName) && Objects.equals(email, customer.email) && Objects.equals(contact, customer.contact);
+        return Objects.equals(fullName, customer.fullName) && Objects.equals(email, customer.email) && Objects.equals(contact, customer.contact);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, email, contact);
+        return Objects.hash(fullName, email, contact);
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
+                "fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", contact='" + contact + '\'' +
                 '}';

@@ -10,15 +10,17 @@ public class Item {
     private String name;
     private String category;
     private double price;
+    private int quantity;
 
     public Item() {
     }
 
-    public Item(long id, String name, String category, double price) {
+    public Item(long id, String name, String category, double price, int quantity) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public long getId() {
@@ -53,17 +55,25 @@ public class Item {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return id == item.id && Double.compare(price, item.price) == 0 && Objects.equals(name, item.name) && Objects.equals(category, item.category);
+        return id == item.id && Double.compare(price, item.price) == 0 && quantity == item.quantity && Objects.equals(name, item.name) && Objects.equals(category, item.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, category, price);
+        return Objects.hash(id, name, category, price, quantity);
     }
 
     @Override
@@ -73,6 +83,7 @@ public class Item {
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }

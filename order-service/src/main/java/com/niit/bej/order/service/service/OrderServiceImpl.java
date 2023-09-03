@@ -2,10 +2,21 @@ package com.niit.bej.order.service.service;
 
 import com.niit.bej.order.service.model.Address;
 import com.niit.bej.order.service.model.Order;
+import com.niit.bej.order.service.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
+    private final OrderRepository orderRepository;
+
+    @Autowired
+    public OrderServiceImpl(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
     @Override
     public Order addOrderForCustomer(String email, Order order) {
         return null;

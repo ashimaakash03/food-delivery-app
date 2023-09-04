@@ -23,6 +23,7 @@
         <module>customer-service</module>
         <module>restaurant-service</module>
         <module>order-service</module>
+        <module>api-gateway</module>
     </modules>
 
     <dependencies>

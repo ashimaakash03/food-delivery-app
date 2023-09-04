@@ -9,7 +9,7 @@ services:
     networks: [ foodie-app-network ]
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYQSL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
   customer-auth-service:
     build: /customer-auth

@@ -35,35 +35,84 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order findOrderByIdForCustomer(String email, long id) throws OrderNotFoundException, CustomerNotFoundException {
+    public Order findOrderByIdForCustomer(String email, long id) throws EmptyDatabaseException, OrderNotFoundException, CustomerNotFoundException {
         Optional<Customer> optionalCustomer = this.orderRepository.findCustomerByEmail(email);
         if (optionalCustomer.isPresent()) {
             Customer customerInDatabase = optionalCustomer.get();
             List<Order> ordersByCustomer = this.orderRepository.findAllOrdersByCustomer(customerInDatabase.getEmail());
             if (ordersByCustomer.isEmpty()) {
-                throw new EmptyDatabaseException();
+                throw new EmptyDatabaseException("No Orders present to search");
+            } else {
+                Order searchedOrder = null;
+                for (Order order : ordersByCustomer) {
+                    if (order.getId() == id) {
+                        searchedOrder = order;
+                    } else {
+                        throw new OrderNotFoundException("Order with ID: " + id + " not found");
+                    }
+                }
+                return searchedOrder;
             }
-
+        } else {
+            throw new CustomerNotFoundException("Customer bearing Email: " + email + " not found");
         }
     }
 
     @Override
-    public List<Order> findAllOrdersOfCustomer(String email) {
-        return null;
+    public List<Order> findAllOrdersOfCustomer(String email) throws EmptyDatabaseException, CustomerNotFoundException {
+        Optional<Customer> optionalCustomer = this.orderRepository.findCustomerByEmail(email);
+        if (optionalCustomer.isPresent()) {
+            Customer customerInDatabase = optionalCustomer.get();
+            List<Order> ordersByCustomer = this.orderRepository.findAllOrdersByCustomer(customerInDatabase.getEmail());
+            if (ordersByCustomer.isEmpty()) {
+                throw new EmptyDatabaseException("No Orders present to search");
+            } else {
+                return ordersByCustomer;
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer bearing Email: " + email + " not found");
+        }
     }
 
     @Override
-    public Order updateOrderOfCustomer(String email, Order order) {
-        return null;
+    public boolean removeOrderForCustomer(String email, long id) throws EmptyDatabaseException, OrderNotFoundException, CustomerNotFoundException {
+        Optional<Customer> optionalCustomer = this.orderRepository.findCustomerByEmail(email);
+        if (optionalCustomer.isPresent()) {
+            Customer customerInDatabase = optionalCustomer.get();
+            List<Order> ordersByCustomer = this.orderRepository.findAllOrdersByCustomer(customerInDatabase.getEmail());
+            if (ordersByCustomer.isEmpty()) {
+                throw new EmptyDatabaseException("No Orders present to search");
+            } else {
+                boolean isOrderDeleted = false;
+                for (Order order : ordersByCustomer) {
+                    if (order.getId() == id) {
+                        this.orderRepository.deleteById(id);
+                        isOrderDeleted = true;
+                    } else {
+                        throw new OrderNotFoundException("Order with ID: " + id + " not found");
+                    }
+                }
+                return isOrderDeleted;
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer bearing Email: " + email + " not found");
+        }
     }
 
     @Override
-    public boolean removeOrderForCustomer(String email, long id) {
-        return false;
-    }
+    public Address modifyDeliveryAddress(String email, long id, Address address) throws OrderNotFoundException, EmptyDatabaseException, CustomerNotFoundException {
+        Optional<Customer> optionalCustomer = this.orderRepository.findCustomerByEmail(email);
+        if (optionalCustomer.isPresent()) {
+            Order recentOrder = this.findOrderByIdForCustomer(email, id);
+            Address addressToBeDelivered = recentOrder.getDeliveryAddress();
 
-    @Override
-    public Address modifyDeliveryAddress(String email, Address address) {
-        return null;
+            addressToBeDelivered.setFlatDetails(address.getFlatDetails());
+            addressToBeDelivered.setSoceityName(address.getSoceityName());
+            addressToBeDelivered.setSector(address.getSector());
+
+            return this.orderRepository.changeDeliveryAddress(addressToBeDelivered);
+        } else {
+            throw new CustomerNotFoundException("Customer bearing Email: " + email + " not found");
+        }
     }
 }

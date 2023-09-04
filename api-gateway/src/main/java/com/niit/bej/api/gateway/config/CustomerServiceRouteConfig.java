@@ -12,5 +12,13 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @LoadBalancerClient(name = "customer-service")
 public class CustomerServiceRouteConfig {
-
+    @Bean
+    @LoadBalanced
+    public RouteLocator locateCustomerServiceRoutes(RouteLocatorBuilder routeLocatorBuilder) {
+        return routeLocatorBuilder.routes()
+                .route(
+                        routePredicate -> routePredicate.path("/customer/**")
+                                .uri("lb://customer-service")
+                ).build();
+    }
 }

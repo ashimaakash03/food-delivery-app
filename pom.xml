@@ -24,6 +24,7 @@
         <module>restaurant-service</module>
         <module>order-service</module>
         <module>api-gateway</module>
+        <module>eureka-server</module>
     </modules>
 
     <dependencies>

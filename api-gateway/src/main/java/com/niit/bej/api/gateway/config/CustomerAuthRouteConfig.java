@@ -10,13 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @LoadBalancerClient(name = "customer-auth-service")
 public class CustomerAuthRouteConfig {
-//    @Bean
-//    @LoadBalanced
-//    public RouteLocator locateCustomerAuthMicroserviceRoutes(RouteLocatorBuilder routeLocatorBuilder) {
-//        return routeLocatorBuilder.routes()
-//                .route(
-//                        routePredicate -> routePredicate.path("/home/**")
-//                                .uri("lb://customer-auth-service")
-//                ).build();
-//    }
+    @Bean
+    @LoadBalanced
+    public RouteLocator locateCustomerAuthMicroserviceRoutes(RouteLocatorBuilder routeLocatorBuilder) {
+        return routeLocatorBuilder.routes()
+                .route(
+                        routePredicate -> routePredicate.path("/home/**")
+                                .uri("lb://customer-auth-service")
+                ).build();
+    }
 }

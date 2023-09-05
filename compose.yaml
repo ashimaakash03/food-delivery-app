@@ -36,6 +36,15 @@ services:
     depends_on: [ mongo-database-service, eureka-server-service ]
     restart: always
 
+  restaurant-service:
+    build: restaurant-service/
+    container_name: restaurant-service-container
+    ports:
+      - "8083:8083"
+    networks: [ foodie-app-network ]
+    depends_on: [customer-service, mongo-database-service, eureka-server-service ]
+    restart: always
+
   api-gateway-service:
     build: api-gateway/
     container_name: api-gateway-container

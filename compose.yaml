@@ -24,7 +24,16 @@ services:
     ports:
       - "8081:8081"
     networks: [ foodie-app-network ]
-    depends_on: [ mysql-database-service ]
+    depends_on: [ mysql-database-service, eureka-server-service ]
+    restart: always
+
+  customer-service:
+    build: customer-service/
+    container_name: customer-service-container
+    ports:
+      - "8082:8082"
+    networks: [ foodie-app-network ]
+    depends_on: [ mongo-database-service, eureka-server-service ]
     restart: always
 
   api-gateway-service:

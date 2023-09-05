@@ -27,6 +27,14 @@ services:
     depends_on: [ mysql-database-service ]
     restart: always
 
+  api-gateway-service:
+    build: api-gateway/
+    container_name: api-gateway-container
+    ports:
+      - "9000:9000"
+    networks: [ foodie-app-network ]
+    depends_on: [ eureka-server-service ]
+
   eureka-server-service:
     build: eureka-server/
     container_name: eureka-server-service-container

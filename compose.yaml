@@ -45,6 +45,15 @@ services:
     depends_on: [customer-service, mongo-database-service, eureka-server-service ]
     restart: always
 
+  order-service:
+    build: order-service/
+    container_name: order-service-container
+    ports:
+      - "8084:8084"
+    networks: [ foodie-app-network ]
+    depends_on: [ customer-service, api-gateway-service, eureka-server-service ]
+    restart: always
+
   api-gateway-service:
     build: api-gateway/
     container_name: api-gateway-container

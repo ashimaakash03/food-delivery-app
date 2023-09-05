@@ -27,6 +27,13 @@ services:
     depends_on: [ mysql-database-service ]
     restart: always
 
+  eureka-server-service:
+    build: eureka-server/
+    container_name: eureka-server-service-container
+    networks: [ foodie-app-network ]
+    ports:
+      - "8761:8761"
+
 networks:
   foodie-app-network:
     driver: bridge

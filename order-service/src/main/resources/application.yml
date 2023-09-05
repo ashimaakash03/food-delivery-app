@@ -12,3 +12,10 @@ spring:
       uri: mongodb://mongodb-database-container:27017/order
       port: 27017
       database: order
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server-service:8761/eureka

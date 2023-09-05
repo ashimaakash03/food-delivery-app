@@ -1,0 +1,14 @@
+server:
+  port: 8084
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: order-service
+
+  data:
+    mongodb:
+      uri: mongodb://mongodb-database-container:27017/order
+      port: 27017
+      database: order

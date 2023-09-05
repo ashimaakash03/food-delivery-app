@@ -1,6 +1,21 @@
 version: "3"
 
 services:
+  eureka-server-service:
+    build: eureka-server/
+    container_name: eureka-server-service-container
+    networks: [ foodie-app-network ]
+    ports:
+      - "8761:8761"
+
+  api-gateway-service:
+    build: api-gateway/
+    container_name: api-gateway-container
+    ports:
+      - "9000:9000"
+    networks: [ foodie-app-network ]
+    depends_on: [ eureka-server-service ]
+
   mysql-database-service:
     image: mysql
     container_name: mysql-container
@@ -53,21 +68,6 @@ services:
     networks: [ foodie-app-network ]
     depends_on: [ customer-service, api-gateway-service, eureka-server-service ]
     restart: always
-
-  api-gateway-service:
-    build: api-gateway/
-    container_name: api-gateway-container
-    ports:
-      - "9000:9000"
-    networks: [ foodie-app-network ]
-    depends_on: [ eureka-server-service ]
-
-  eureka-server-service:
-    build: eureka-server/
-    container_name: eureka-server-service-container
-    networks: [ foodie-app-network ]
-    ports:
-      - "8761:8761"
 
 networks:
   foodie-app-network:

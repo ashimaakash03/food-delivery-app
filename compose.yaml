@@ -11,6 +11,13 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
+  mongo-database-service:
+    image: mongo
+    container_name: mongodb-database-container
+    ports:
+      - "27018:27017"
+    networks: [ foodie-app-network ]
+
   customer-auth-service:
     build: /customer-auth
     container_name: customer-auth-service-container

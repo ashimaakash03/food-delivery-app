@@ -20,10 +20,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class CustomerAuthRepositoryTest {
     private CustomerRepository customerRepository;
     private Customer customer;
+//    @Autowired
+//    public CustomerAuthRepositoryTest(CustomerRepository customerRepository) {
+//        this.customerRepository = customerRepository;
+//    }
 
     @BeforeEach
     void setUp() {
-        customer = new Customer("", "", "", "");
+        customer = new Customer("Ashim", "9154472559", "ashimaakash1997@gmail.com", "@Aakash1234");
     }
 
     @AfterEach
@@ -59,7 +63,7 @@ public class CustomerAuthRepositoryTest {
 
         List<Customer> customerList = this.customerRepository.findAll();
         assertEquals(3, customerList.size());
-        assertEquals("Ashim", customerList.get(1).getFullname());
-        assertEquals("Ashutosh", customerList.get(2).getFullname());
+        assertEquals("Ashim", customer1.getFullname());
+        assertEquals("Ashutosh", customer2.getFullname());
     }
 }

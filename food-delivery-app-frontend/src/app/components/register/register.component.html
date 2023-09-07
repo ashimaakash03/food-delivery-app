@@ -2,7 +2,7 @@
 	<div class="row mt-4">
 		<div class="col">
 
-			<form [formGroup]="registerForm" novalidate>
+			<form [formGroup]="registerForm" class="needs-validation" novalidate>
 				<h2 class="fs-4 text-center">
 					Register Form®️
 				</h2>
@@ -42,7 +42,7 @@
 							Contact cannot be empty
 						</mat-error>
 						<mat-error *ngIf="registerForm.controls['contact'].hasError('pattern')">
-							Contact should be 10 digits and start with 6, 7, 8, or 9
+							Contact should be 10 digits and start with 7, 8, or 9
 						</mat-error>
 					</mat-error>
 				</div>
@@ -54,8 +54,8 @@
 							matInput
 							maxlength="100"
 							pattern="^[a-zA-Z0-9._]+[@]+[a-zA-Z]+[.com]"
-						placeholder="ex: john@example.com"
-						type="email"
+							placeholder="ex: john@example.com"
+							type="email"
 						/>
 					</mat-form-field>
 					<mat-error

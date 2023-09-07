@@ -1,10 +1,6 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {Routes} from "@angular/router";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-const routes: Routes = [
-  // Add more routes as needed
-];
 
 
 @NgModule({

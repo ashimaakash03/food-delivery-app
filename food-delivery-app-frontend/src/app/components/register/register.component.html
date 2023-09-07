@@ -31,7 +31,7 @@
 							formControlName="contact"
 							matInput
 							maxlength="10"
-							pattern="^[789]\d{9}$"
+							pattern="^[6-9]\d{9}$"
 							placeholder="ex: 9876543210"
 							type="text"
 						/>
@@ -42,7 +42,7 @@
 							Contact cannot be empty
 						</mat-error>
 						<mat-error *ngIf="registerForm.controls['contact'].hasError('pattern')">
-							Contact should be 10 digits and start with 7, 8, or 9
+							Contact should be 10 digits and start with 6, 7, 8, or 9
 						</mat-error>
 					</mat-error>
 				</div>
@@ -53,8 +53,8 @@
 							formControlName="email"
 							matInput
 							maxlength="100"
-							pattern="^[a-zA-Z0-9._]+[@]+[a-zA-Z]+[.com]"
-							placeholder="ex: john@example.com"
+							pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
+							placeholder="ex: axe00@example.com"
 							type="email"
 						/>
 					</mat-form-field>

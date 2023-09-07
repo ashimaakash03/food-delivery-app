@@ -1,1 +1,114 @@
+<div class="container">
+	<div class="row mt-4">
+		<div class="col">
+
+			<form [formGroup]="registerForm" novalidate>
+				<h2 class="fs-4 text-center">
+					Register Form®️
+				</h2>
+				<div class="mt-4">
+					<mat-form-field class="col-12">
+						<mat-label>Full Name</mat-label>
+						<input
+							formControlName="fullname"
+							matInput
+							maxlength="50"
+							placeholder="ex: Axe00, Ashish"
+							type="text"
+						/>
+					</mat-form-field>
+					<mat-error
+						*ngIf="registerForm.controls['fullname'].invalid && (registerForm.controls['fullname'].dirty || registerForm.controls['fullname'].touched)">
+						<mat-error *ngIf="registerForm.controls['fullname'].hasError('required')">
+							Full Name cannot be empty
+						</mat-error>
+					</mat-error>
+				</div>
+				<div class="mt-4">
+					<mat-form-field class="col-12">
+						<mat-label>Contact</mat-label>
+						<input
+							formControlName="contact"
+							matInput
+							maxlength="10"
+							pattern="^[6-9]\d{9}$"
+							placeholder="ex: 9876543210"
+							type="text"
+						/>
+					</mat-form-field>
+					<mat-error
+						*ngIf="registerForm.controls['contact'].invalid && (registerForm.controls['contact'].dirty || registerForm.controls['contact'].touched)">
+						<mat-error *ngIf="registerForm.controls['contact'].hasError('required')">
+							Contact cannot be empty
+						</mat-error>
+						<mat-error *ngIf="registerForm.controls['contact'].hasError('pattern')">
+							Contact should be 10 digits and start with 6, 7, 8, or 9
+						</mat-error>
+					</mat-error>
+				</div>
+				<div class="mt-4">
+					<mat-form-field class="col-12">
+						<mat-label>Email</mat-label>
+						<input
+							formControlName="email"
+							matInput
+							maxlength="100"
+						pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+						placeholder="ex: john@example.com"
+						type="email"
+						/>
+					</mat-form-field>
+					<mat-error
+						*ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+						<mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+							Email cannot be empty
+						</mat-error>
+						<mat-error *ngIf="registerForm.controls['email'].hasError('pattern')">
+							Invalid email format
+						</mat-error>
+					</mat-error>
+				</div>
+				<div class="mt-4">
+					<mat-form-field class="col-12">
+						<mat-label>Password🔑</mat-label>
+						<input
+							formControlName="password"
+							matInput
+							maxlength="25"
+							minlength="8"
+							placeholder="ex: LittleKidLover"
+							type="password"
+						/>
+					</mat-form-field>
+					<mat-error
+						*ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+						<mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+							Password cannot be empty
+						</mat-error>
+						<mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">
+							Password should have at least 8 characters
+						</mat-error>
+						<mat-error *ngIf="registerForm.controls['password'].hasError('maxlength')">
+							Password cannot be more than 25 characters
+						</mat-error>
+					</mat-error>
+				</div>
+				<div class="mt-4 d-flex justify-content-around">
+					<button
+						(click)="register()"
+						[disabled]="registerForm.invalid"
+						class="col-3 rounded-pill"
+						color="primary"
+						mat-raised-button
+						type="submit"
+					>
+						Register
+					</button>
+				</div>
+				<a routerLink="/login" style="position: relative; left: 100px; top: 14px; text-decoration: none">Already
+					registered? Click here to login!</a>
+			</form>
+		</div>
+	</div>
+</div>
 

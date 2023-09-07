@@ -6,9 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+	selector: 'app-register', templateUrl: './register.component.html', styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 	registerForm!: FormGroup;
@@ -18,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.registerForm = this.formBuilder.group({
-			fullname: ['', [Validators.required, Validators.maxLength(50)]], // Adjust max length as needed
+			fullname: ['', [Validators.required, Validators.maxLength(50)]],
 			contact: ['', [Validators.required, Validators.pattern('^[6-9]\\d{9}$')]],
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]]
@@ -30,7 +28,7 @@ export class RegisterComponent implements OnInit {
 			return;
 		}
 
-		const customer: Customer= {
+		const customer: Customer = {
 			fullname: this.registerForm.value.fullname,
 			contact: this.registerForm.value.contact,
 			email: this.registerForm.value.email,

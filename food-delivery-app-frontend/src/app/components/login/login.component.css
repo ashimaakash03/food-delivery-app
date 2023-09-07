@@ -1,0 +1,11 @@
+form {
+	max-width: 500px;
+	margin: 0 auto;
+	border: 1px solid #ddd;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+	background-color: #45a049;
+}

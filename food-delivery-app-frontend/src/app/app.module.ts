@@ -7,6 +7,9 @@ import {RegisterComponent} from './components/register/register.component';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './components/login/login.component';
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import {LoginComponent} from './components/login/login.component';
     RegisterComponent,
     LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		MatInputModule,
+		ReactiveFormsModule,
+		MatButtonModule
+	],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -8,8 +8,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './components/login/login.component';
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {HttpClientModule} from "@angular/common/http";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -25,7 +30,13 @@ import {MatButtonModule} from "@angular/material/button";
 		BrowserAnimationsModule,
 		MatInputModule,
 		ReactiveFormsModule,
-		MatButtonModule
+		MatButtonModule,
+		FormsModule,
+		MatSnackBarModule,
+		HttpClientModule,
+		MatListModule,
+		MatIconModule,
+		MatToolbarModule
 	],
   providers: [],
   bootstrap: [AppComponent]

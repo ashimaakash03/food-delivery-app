@@ -37,7 +37,7 @@
 						/>
 					</mat-form-field>
 					<mat-error
-						*ngIf="loginForm.controls['contact'].invalid && (loginForm.controls['contact'].dirty || registerForm.controls['contact'].touched)">
+						*ngIf="loginForm.controls['contact'].invalid && (loginForm.controls['contact'].dirty || loginForm.controls['contact'].touched)">
 						<mat-error *ngIf="loginForm.controls['contact'].hasError('required')">
 							Contact cannot be empty
 						</mat-error>
@@ -59,7 +59,7 @@
 						/>
 					</mat-form-field>
 					<mat-error
-						*ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+						*ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
 						<mat-error *ngIf="loginForm.controls['email'].hasError('required')">
 							Email cannot be empty
 						</mat-error>
@@ -81,7 +81,7 @@
 						/>
 					</mat-form-field>
 					<mat-error
-						*ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+						*ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
 						<mat-error *ngIf="loginForm.controls['password'].hasError('required')">
 							Password cannot be empty
 						</mat-error>

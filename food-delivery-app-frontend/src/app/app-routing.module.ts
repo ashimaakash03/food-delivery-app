@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
+import {HomepageComponent} from "./components/homepage/homepage.component";
 
-const routes: Routes = []
-
+const routes: Routes = [
+  {path: "", redirectTo: "\home", pathMatch: "full"},
+  {path: "home", component: HomepageComponent}
+]
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

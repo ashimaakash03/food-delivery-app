@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {ItemDetailsComponent} from './components/item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     HeaderComponent,
     SearchComponent,
     RegisterComponent,
-    LoginComponent
+	  LoginComponent,
+	  ItemDetailsComponent
   ],
 	imports: [
 		BrowserModule,

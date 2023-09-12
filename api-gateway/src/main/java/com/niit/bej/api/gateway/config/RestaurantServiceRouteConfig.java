@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@LoadBalancerClient
+@LoadBalancerClient("restaurant-service")
 public class RestaurantServiceRouteConfig {
     @Bean
     @LoadBalanced

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@LoadBalancerClient
+@LoadBalancerClient(name = "order-service")
 public class OrderServiceRouteConfig {
     @Bean
     @LoadBalanced

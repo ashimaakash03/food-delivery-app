@@ -1,6 +1,324 @@
 {
   "menu-list": [
     {
+      "id": 101,
+      "name": "Chicken Lollipop",
+      "category": "Starters",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/starters/chicken-lollipop.PNG",
+      "price": 150,
+      "ratings": 4.1
+    },
+    {
+      "id": 102,
+      "name": "Chicken Soup",
+      "category": "Starters",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/starters/chicken-soup.PNG",
+      "price": 100,
+      "ratings": 4.15
+    },
+    {
+      "id": 103,
+      "name": "Crispy Veg",
+      "category": "Starters",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/starters/crispy-veg.PNG",
+      "price": 150,
+      "ratings": 4.2
+    },
+    {
+      "id": 104,
+      "name": "Paneer 65",
+      "category": "Starters",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/starters/paneer-65.PNG",
+      "price": 150,
+      "ratings": 4.25
+    },
+    {
+      "id": 105,
+      "name": "Tomato Soup",
+      "category": "Starters",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/starters/tomato-soup.PNG",
+      "price": 150,
+      "ratings": 4.3
+    },
+    {
+      "id": 201,
+      "name": "Chicken Salad",
+      "category": "Salads",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/salads/chicken-salad.PNG",
+      "price": 150,
+      "ratings": 4.35
+    },
+    {
+      "id": 202,
+      "name": "Egg Salad",
+      "category": "Salads",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/salads/egg-salad.PNG",
+      "price": 150,
+      "ratings": 4.3
+    },
+    {
+      "id": 203,
+      "name": "Guacamole Salad",
+      "category": "Salads",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/salads/guacamole-salad.PNG",
+      "price": 175,
+      "ratings": 4.4
+    },
+    {
+      "id": 204,
+      "name": "Mixed Salad",
+      "category": "Salads",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/salads/mixed-salad.PNG",
+      "price": 125,
+      "ratings": 4.3
+    },
+    {
+      "id": 205,
+      "name": "Prawn Salad",
+      "category": "Salads",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/salads/prawn-salad.PNG",
+      "price": 150,
+      "ratings": 4.35
+    },
+    {
+      "id": 301,
+      "name": "Malai Kofta",
+      "category": "Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/veg-main-course/malai-kofta.PNG",
+      "price": 200,
+      "ratings": 4.45
+    },
+    {
+      "id": 302,
+      "name": "Mixed Veg",
+      "category": "Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/veg-main-course/mixed-veg.PNG",
+      "price": 180,
+      "ratings": 4.35
+    },
+    {
+      "id": 303,
+      "name": "Mushroom Do Pyaza",
+      "category": "Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/veg-main-course/mushroom-do-pyaza.PNG",
+      "price": 195,
+      "ratings": 4.4
+    },
+    {
+      "id": 304,
+      "name": "Paneer Butter Masala",
+      "category": "Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/veg-main-course/paneer-butter-masala.PNG",
+      "price": 200,
+      "ratings": 4.5
+    },
+    {
+      "id": 305,
+      "name": "Sabz E Bahar",
+      "category": "Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/veg-main-course/sabz-e-bahar.PNG",
+      "price": 170,
+      "ratings": 4.3
+    },
+    {
+      "id": 401,
+      "name": "Afghan Chaap",
+      "category": "Non Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/non-veg-main-course/afghan-chaap.PNG",
+      "price": 230,
+      "ratings": 4.5
+    },
+    {
+      "id": 402,
+      "name": "Butter Chicken",
+      "category": "Non Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/non-veg-main-course/butter-chicken.PNG",
+      "price": 200,
+      "ratings": 4.45
+    },
+    {
+      "id": 403,
+      "name": "Gosht E Khaas",
+      "category": "Non Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/non-veg-main-course/gosht-e-khaas.PNG",
+      "price": 240,
+      "ratings": 4.55
+    },
+    {
+      "id": 404,
+      "name": "Mixed Meat",
+      "category": "Non Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/non-veg-main-course/mixed-meat.PNG",
+      "price": 300,
+      "ratings": 4.7
+    },
+    {
+      "id": 405,
+      "name": "Murgh E Shahi",
+      "category": "Non Veg Main Course",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/non-veg-main-course/murgh-e-shahi.PNG",
+      "price": 300,
+      "ratings": 4.7
+    },
+    {
+      "id": 501,
+      "name": "Chicken Biryani",
+      "category": "Rice And Noodles",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/rice-noodles/chicken-biryani.PNG",
+      "price": 250,
+      "ratings": 4.75
+    },
+    {
+      "id": 502,
+      "name": "Chicken Hakka Noodles",
+      "category": "Rice And Noodles",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/rice-noodles/chicken-hakka-noodles.PNG",
+      "price": 225,
+      "ratings": 4.6
+    },
+    {
+      "id": 503,
+      "name": "Kashmiri Pulao",
+      "category": "Rice And Noodles",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/rice-noodles/kashmiri-pulao.PNG",
+      "price": 300,
+      "ratings": 4.7
+    },
+    {
+      "id": 504,
+      "name": "Pan Fried Noodles",
+      "category": "Rice And Noodles",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/rice-noodles/pan-fried-noodles.PNG",
+      "price": 250,
+      "ratings": 4.3
+    },
+    {
+      "id": 505,
+      "name": "Veg Biryani",
+      "category": "Rice And Noodles",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/rice-noodles/veg-biryani.PNG",
+      "price": 300,
+      "ratings": 4.75
+    },
+    {
+      "id": 601,
+      "name": "Amritsari Kulcha",
+      "category": "Bread",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/bread/amritsari-kulcha.PNG",
+      "price": 30,
+      "ratings": 4.5
+    },
+    {
+      "id": 602,
+      "name": "Butter Naan",
+      "category": "Bread",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/bread/butter-naan.PNG",
+      "price": 30,
+      "ratings": 4.6
+    },
+    {
+      "id": 603,
+      "name": "Lachcha Paratha",
+      "category": "Bread",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/bread/lachcha-paratha.PNG",
+      "price": 30,
+      "ratings": 4.7
+    },
+    {
+      "id": 604,
+      "name": "Rumali Roti",
+      "category": "Bread",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/bread/rumali-roti",
+      "price": 20,
+      "ratings": 4.5
+    },
+    {
+      "id": 605,
+      "name": "Tawa Roti",
+      "category": "Bread",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/bread/tawa-roti.PNG",
+      "price": 15,
+      "ratings": 4.3
+    },
+    {
+      "id": 701,
+      "name": "Gajar Ka Halwa",
+      "category": "Desserts",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/desserts/gajar-ka-halwa.PNG",
+      "price": 100,
+      "ratings": 4.8
+    },
+    {
+      "id": 702,
+      "name": "Gulab Jamun",
+      "category": "Desserts",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/desserts/gulab-jamun.PNG",
+      "price": 125,
+      "ratings": 4.75
+    },
+    {
+      "id": 703,
+      "name": "Pista Kulfi",
+      "category": "Desserts",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/desserts/kulfi.PNG",
+      "price": 30,
+      "ratings": 4.7
+    },
+    {
+      "id": 704,
+      "name": "Pastries (Any)",
+      "category": "Desserts",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/desserts/pastries.PNG",
+      "price": 60,
+      "ratings": 4.8
+    },
+    {
+      "id": 705,
+      "name": "Sizzling Brownie",
+      "category": "Desserts",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/desserts/sizzling-brownie.PNG",
+      "price": 150,
+      "ratings": 4.8
+    },
+    {
+      "id": 801,
+      "name": "Fruit Juice",
+      "category": "Beverages",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/beverages/fruit-juice.PNG",
+      "price": 80,
+      "ratings": 4.5
+    },
+    {
+      "id": 802,
+      "name": "Sweet & Salt Lassi",
+      "category": "Beverages",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/beverages/lassi.PNG",
+      "price": 300,
+      "ratings": 4.75
+    },
+    {
+      "id": 803,
+      "name": "Mineral Water",
+      "category": "Beverages",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/beverages/mineral-water.PNG",
+      "price": 60,
+      "ratings": 5
+    },
+    {
+      "id": 804,
+      "name": "Soft Drinks",
+      "category": "Beverages",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/beverages/soft-drinks.PNG",
+      "price": 50,
+      "ratings": 4.75
+    },
+    {
+      "id": 805,
+      "name": "Special Chaai",
+      "category": "Beverages",
+      "imageUrl": "food-delivery-app-frontend/src/assets/images/menu/beverages/tea.PNG",
+      "price": 300,
+      "ratings": 4.75
     }
   ]
 }

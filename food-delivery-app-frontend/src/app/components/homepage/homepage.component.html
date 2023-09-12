@@ -1,7 +1,7 @@
 <app-search></app-search>
 <h2 class="text-center mt-2"> MENU CARD </h2>
-<div class="cards">
-	<div *ngFor="let food of foods" class="card container mt-3 justify-content-center" style="width: 16rem">
+<div class="cards container-fluid" style="border: 1px solid red">
+	<div *ngFor="let food of foods" class="card mt-3 justify-content-center" style="width: 15rem">
 		<img alt="{{food.name}}" class="card-img-top" src="{{food.imageUrl}}">
 		<div class="card-body">
 			<h4 class="card-title fw-bold text-center">{{food.name}}</h4>

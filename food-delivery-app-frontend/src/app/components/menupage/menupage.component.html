@@ -1,1 +1,14 @@
-<p>menupage works!</p>
+<app-search></app-search>
+<div *ngFor="let menu of menuitems" class="card m-3" style="width: 16rem;">
+	<img alt="{{menu.name}}" class="card-img-top" src="{{menu.imageUrl}}">
+	<div class="card-body">
+		<h3 class="card-title fw-bold fs-3 text-center">{{menu.name}}</h3>
+		<p class="card-text text-center">
+			<span><strong>Category:</strong> {{menu.category}}</span> &nbsp;
+			<span><strong>Price:</strong> ₹{{menu.price}}/- </span>&nbsp;
+			<span><strong>Ratings: &nbsp;</strong> <img src="src/assets/images/menu/ratings.JPG"/>{{menu.ratings}}
+				/5 </span>
+		</p>
+		<button class="btn btn-danger ms-5" href="#">Add To Cart</button>
+	</div>
+</div>

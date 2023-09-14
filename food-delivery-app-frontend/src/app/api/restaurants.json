@@ -1,0 +1,32 @@
+{
+	"restaurants": [
+		{
+			"id": 1,
+			"name": "Curry Kingdom",
+			"imageUrl": "food-delivery-app-frontend/src/assets/images/restaurants/curry-kingdom.PNG",
+			"ratings": 4.4,
+			"deliveryTime": "1 hour"
+		},
+		{
+			"id": 2,
+			"name": "Karim's Restaurant",
+			"imageUrl": "food-delivery-app-frontend/src/assets/images/restaurants/karims.PNG",
+			"ratings": 4.5,
+			"deliveryTime": "50 minutes"
+		},
+		{
+			"id": 3,
+			"name": "Khan Chacha",
+			"imageUrl": "food-delivery-app-frontend/src/assets/images/restaurants/khan-chacha.PNG",
+			"ratings": 4.8,
+			"deliveryTime": "45 minutes"
+		},
+		{
+			"id": 4,
+			"name": "Moti Mahal Deluxe",
+			"imageUrl": "food-delivery-app-frontend/src/assets/images/restaurants/moti-mahal.PNG",
+			"ratings": 4.8,
+			"deliveryTime": "40 minutes"
+		}
+	]
+}

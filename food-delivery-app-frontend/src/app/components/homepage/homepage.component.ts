@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {RestaurantService} from "../../services/restaurant.service";
+import {Restaurant} from "../../models/restaurant";
 
 
 @Component({
@@ -7,8 +9,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-    ngOnInit(): void {
+	restaurants: Restaurant[] = [];
 
+	constructor(private restaurantService: RestaurantService) {
+	}
+    ngOnInit(): void {
+		// @ts-ignore
+		this.restaurants = this.restaurantService.getAll().subscribe(
+			(data: Restaurant[]) => {
+				this.restaurants = data;
+				alert("List of Restaurants Fetched");
+			}
+		)
 	}
 
 }

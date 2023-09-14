@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
 	selector: 'app-menupage',
 	templateUrl: './menupage.component.html',
 	styleUrls: ['./menupage.component.css']
 })
-export class MenupageComponent {
+export class MenupageComponent implements OnInit {
+	ngOnInit(): void {
+	}
 
 }

@@ -228,7 +228,7 @@
       "id": 604,
       "name": "Rumali Roti",
       "category": "Bread",
-		"imageUrl": "./assets/images/menu/bread/rumali-roti",
+		"imageUrl": "food-delivery-app-frontend/src/assets/images/menu/bread/rumali-roti.PNG",
       "price": 20,
       "ratings": 4.5
     },

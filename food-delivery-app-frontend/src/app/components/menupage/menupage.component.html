@@ -1,6 +1,6 @@
 <app-search></app-search>
-<div *ngFor="let menu of menuitems" class="card m-3" style="width: 14rem; height: auto; display: inline-flex">
-	<img alt="{{menu.name}}" class="card-img-top" src="{{menu.imageUrl}}">
+<div *ngFor="let menu of menuitems" class="card m-3" style="width: 14rem; height: 25rem; display: inline-flex">
+	<img alt="{{menu.name}}" class="card-img-top" src="{{menu.imageUrl}}" style="height: 150px; width: 222px">
 	<div class="card-body">
 		<h3 class="card-title fw-bold fs-3 text-center">{{menu.name}}</h3>
 		<p class="card-text text-center">
@@ -10,6 +10,6 @@
 														src="./assets/images/menu/ratings.JPG"/>{{menu.ratings}}
 				/5 </span>
 		</p>
-		<button class="btn btn-danger ms-5" href="#">Add To Cart</button>
+		<button class="btn btn-danger ms-5" routerLink="/cart">Add To Cart</button>
 	</div>
 </div>

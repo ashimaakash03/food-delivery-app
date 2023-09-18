@@ -8,7 +8,7 @@ import {CartPageComponent} from "./components/cart-page/cart-page.component";
 import {MenupageComponent} from "./components/menupage/menupage.component";
 
 const routes: Routes = [
-	{path: "", redirectTo: "\home", pathMatch: "full"},
+	{path: "", redirectTo: "\login", pathMatch: "full"},
 	{path: "home", component: HomepageComponent},
 	{path: "register", component: RegisterComponent},
 	{path: "login", component: LoginComponent},

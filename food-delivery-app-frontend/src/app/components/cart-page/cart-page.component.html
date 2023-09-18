@@ -1,1 +1,39 @@
-<p>cart-page works!</p>
+<ng-container *ngIf="true">
+	<div class="card-table mt-5 container">
+		<div class="row text-center fs-2 fw-bold">
+			<h2> My Cart </h2>
+		</div>
+		<div class="cart-item">
+			<table class="table table-responsive">
+				<thead>
+				<tr>
+					<th> Serial No.</th>
+					<th> Item Image</th>
+					<th> Item Name</th>
+					<th> Category</th>
+					<th> Price</th>
+					<th> Quantity</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+</ng-container>
+
+<ng-container *ngIf="false">
+	<div class="container mt-3">
+		<div class="row text-center fs-2 fw-bold">
+			<h2> My Cart </h2>
+		</div>
+		<div class="card align-items-center p-4">
+			<div>
+				<img alt="nothing in cart" src="./assets/empty-cart.PNG" style="height: 200px; width: 250px">
+			</div>
+			<div class="mt-5 text-center">
+				<h2> Your Cart is currently empty </h2>
+				<h4> Add Item to cart </h4>
+			</div>
+			<button class="btn btn-danger"> Go To Menu</button>
+		</div>
+	</div>
+</ng-container>

@@ -1,10 +1,10 @@
 <div class="container-fluid mt-4">
   <div class="row">
     <div class="col-8">
-      <input class="form-control col-12" placeholder="Enter Item to Search" type="text"/>
+		<input [(ngModel)]="searchText" class="form-control col-12" placeholder="Enter to Search" type="text"/>
     </div>
     <div class="col-2">
-      <button class="btn btn-success col-12" type="submit">
+		<button (click)="searchItem()" class="btn btn-success col-12" type="submit">
         Search
       </button>
     </div>

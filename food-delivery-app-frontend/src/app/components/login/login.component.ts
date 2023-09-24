@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 	login(data: Customer) {
 		this.httpClient.post('http://localhost:8081/home/login', data)
 			.subscribe((result: any) => {
+				this.router.navigate(['/home'])
 				this.snackBar.open('Logged in Successfully', 'Close', {
 					duration: 2000
 				});

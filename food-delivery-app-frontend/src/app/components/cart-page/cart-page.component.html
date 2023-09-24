@@ -1,22 +1,22 @@
-<ng-container *ngIf="false">
+<ng-container *ngIf="foods.length == 0">
 	<div class="container mt-4">
 		<div class="card">
 			<h3 class="card-title text-center fs-3 mt-2"> My Cart </h3>
 			<img alt="Empty Cart" src="./assets/images/empty-cart.PNG">
 			<h3> Your Cart is currently empty</h3>
 			<h4> Add Items Now... !!! </h4>
-			<button class="btn btn-danger mb-4 col-lg-6"> Go To Menu</button>
+			<button class="btn btn-danger mb-4 col-lg-6" routerLink="/menu"> Go To Menu</button>
 		</div>
 	</div>
 </ng-container>
 
-<ng-container *ngIf="true">
+<ng-container *ngIf="foods.length != 0">
 	<div class="row">
 		<h3 class="card-title text-center fs-3 mt-2"> My Cart </h3>
 	</div>
 	<div class="card-table container">
 		<div class="cart-item">
-			<table class="table table-responsive">
+			<table class="table table-responsive text-center">
 				<thead>
 				<tr>
 					<th> Serial No.</th>
@@ -30,16 +30,16 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr *ngFor="let item of foods; let i= index">
+					<td>{{i + 1}}</td>
+					<td>{{item.imageUrl}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.category}}</td>
+					<td>{{item.quantity}}</td>
+					<td>{{item.price}}</td>
+					<td>{{item.quantity * item.price}}</td>
 					<td>
-						<button class="btn btn-danger"> Delete</button>
+						<button (click)="removeItem(item)" class="btn btn-danger"> Delete</button>
 					</td>
 				</tr>
 				</tbody>

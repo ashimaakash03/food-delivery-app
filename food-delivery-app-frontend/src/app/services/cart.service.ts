@@ -26,6 +26,7 @@ export class CartService {
 		this.cartItemList.push(food);
 		this.foodList.next(this.cartItemList);
 		this.getTotalPrice();
+		alert(food.name + " was added");
 	}
 
 	getTotalPrice(): number {

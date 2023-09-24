@@ -42,6 +42,19 @@
 						<button (click)="removeItem(item)" class="btn btn-danger"> Delete</button>
 					</td>
 				</tr>
+				<tr>
+					<td colspan="4"></td>
+					<td>
+						<button (click)="clearCart()" class="btn btn-info"> Clear Cart</button>
+					</td>
+					<td>
+						<button class="btn btn-success" routerLink="/menu"> Shop More</button>
+					</td>
+					<td>
+						<button class="btn btn-danger"> Checkout</button>
+					</td>
+					<td> Grand Total: <strong> ₹{{grandTotal}} </strong></td>
+				</tr>
 				</tbody>
 			</table>
 		</div>

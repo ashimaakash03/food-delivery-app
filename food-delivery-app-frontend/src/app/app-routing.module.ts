@@ -6,6 +6,7 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {LoginComponent} from "./components/login/login.component";
 import {CartPageComponent} from "./components/cart-page/cart-page.component";
 import {MenupageComponent} from "./components/menupage/menupage.component";
+import {CheckoutComponent} from "./components/checkout/checkout.component";
 
 const routes: Routes = [
 	{path: "", redirectTo: "\login", pathMatch: "full"},
@@ -14,6 +15,7 @@ const routes: Routes = [
 	{path: "login", component: LoginComponent},
 	{path: "menu", component: MenupageComponent},
 	{path: "cart", component: CartPageComponent},
+	{path: "checkout", component: CheckoutComponent},
 	{path: "**", component: NotFoundComponent}
 ]
 @NgModule({

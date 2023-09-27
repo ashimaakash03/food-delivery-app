@@ -1,12 +1,18 @@
 <app-search></app-search>
-<div *ngFor="let restaurant of restaurants" class="card mt-4 mb-4 container" style="width: 40%">
-	<img alt="{{restaurant.name}}" class="card-img-top hotel" src="{{restaurant.imageUrl}}">
-	<div class="card-body">
-		<h3 class="card-title text-center fw-bold fs-2">{{restaurant.name}}</h3>
-		<p class="card-text text-center">
-			<span> Ratings: <img src="assets/images/menu/ratings.JPG">{{restaurant.ratings}}/5 </span> &nbsp;
-			<span>Delivery Time: {{restaurant.deliveryTime}} </span>
-		</p>
-		<button class="btn btn-danger ms-5" href="#" routerLink="/menu">Go to Menu Page</button>
+<div class="container">
+	<div *ngFor="let restaurant of restaurants" class="card m-4"
+		 style="width: 25%; height: 550px; display: inline-flex">
+		<img alt="{{restaurant.name}}" class="card-img-top hotel" src="{{restaurant.imageUrl}}">
+		<div class="card-body">
+			<h3 class="card-title text-center fw-bold fs-2">{{restaurant.name}}</h3>
+			<p class="card-text text-center">
+				Ratings: <img src="assets/images/menu/ratings.JPG"> <strong>{{restaurant.ratings}}/5</strong>
+			</p>
+			<p class="card-text text-center">
+				Delivery Time: <strong>{{restaurant.deliveryTime}}</strong>
+			</p>
+			<p class="card-text text-center"> City: <strong>{{restaurant.city}}</strong></p>
+			<button class="btn btn-danger ms-5" href="#" routerLink="/menu">Go to Menu Page</button>
+		</div>
 	</div>
 </div>

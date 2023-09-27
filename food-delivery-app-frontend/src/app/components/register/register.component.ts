@@ -58,4 +58,17 @@ export class RegisterComponent implements OnInit {
 				}
 			});
 	}
+
+	cities = [
+		{name: 'Bangalore'},
+		{name: 'Mumbai'},
+		{name: 'Delhi'},
+		{name: 'Hyderabad'},
+		{name: 'Pune'},
+		{name: 'Chennai'},
+		{name: 'Jaipur'},
+		{name: 'Chandigarh'},
+		{name: 'Mysore'},
+		{name: ''},
+	]
 }

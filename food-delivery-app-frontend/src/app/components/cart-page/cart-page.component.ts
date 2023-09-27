@@ -11,7 +11,7 @@ export class CartPageComponent implements OnInit {
 	public foods: FoodItem[] = [];
 	public grandTotal: number = 0;
 
-	constructor(private cartService: CartService) {
+	constructor(private cartService: CartService, private item: FoodItem) {
 	}
 
 	ngOnInit(): void {
@@ -27,5 +27,13 @@ export class CartPageComponent implements OnInit {
 
 	clearCart() {
 		this.cartService.clearCart();
+	}
+
+	decreaseQuantity(item: FoodItem) {
+		this.cartService.decreaseQuantity(item);
+	}
+
+	increaseQuantity(item: FoodItem) {
+		this.cartService.increaseQuantity(item);
 	}
 }

@@ -5,28 +5,48 @@
 			"name": "Curry Kingdom",
 			"imageUrl": "./assets/images/restaurants/curry-kingdom.PNG",
 			"ratings": 4.4,
-			"deliveryTime": "1 hour"
+			"deliveryTime": "1 hour",
+			"city": "Hyderabad"
 		},
 		{
 			"id": 2,
 			"name": "Karim's Restaurant",
 			"imageUrl": "./assets/images/restaurants/karims.PNG",
 			"ratings": 4.5,
-			"deliveryTime": "50 minutes"
+			"deliveryTime": "50 minutes",
+			"city": "Delhi"
 		},
 		{
 			"id": 3,
 			"name": "Khan Chacha",
 			"imageUrl": "./assets/images/restaurants/khan-chacha.PNG",
 			"ratings": 4.8,
-			"deliveryTime": "45 minutes"
+			"deliveryTime": "45 minutes",
+			"city": "Bangalore"
 		},
 		{
 			"id": 4,
 			"name": "Moti Mahal Deluxe",
 			"imageUrl": "./assets/images/restaurants/moti-mahal.PNG",
 			"ratings": 4.8,
-			"deliveryTime": "40 minutes"
+			"deliveryTime": "40 minutes",
+			"city": "Kolkata"
+		},
+		{
+			"id": 5,
+			"name": "Khidmat Restaurant",
+			"imageUrl": "./assets/images/restaurants/khidmat.PNG",
+			"ratings": 4.7,
+			"deliveryTime": "45 minutes",
+			"city": "Ahmedabad"
+		},
+		{
+			"id": 6,
+			"name": "Daryaganj Restaurant",
+			"imageUrl": "./assets/images/restaurants/daryaganj.PNG",
+			"ratings": 4.75,
+			"deliveryTime": "50 minutes",
+			"city": "Lucknow"
 		}
 	]
 }

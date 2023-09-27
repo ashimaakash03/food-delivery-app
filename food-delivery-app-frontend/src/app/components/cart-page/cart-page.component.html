@@ -35,14 +35,18 @@
 					<td>{{item.imageUrl}}</td>
 					<td>{{item.name}}</td>
 					<td>{{item.category}}</td>
-					<td>{{item.quantity}}</td>
+					<td>
+						<button (click)="decreaseQuantity(item)" class="badge bg-danger"> -</button>
+						{{item.quantity}}
+						<button (click)="increaseQuantity(item)" class="badge bg-success"> +</button>
+					</td>
 					<td>{{item.price}}</td>
 					<td>{{item.quantity * item.price}}</td>
 					<td>
 						<button (click)="removeItem(item)" class="btn btn-danger"> Delete</button>
 					</td>
 				</tr>
-				<tr>
+				<tr style="justify-content: center">
 					<td colspan="4"></td>
 					<td>
 						<button (click)="clearCart()" class="btn btn-info"> Clear Cart</button>
@@ -51,7 +55,7 @@
 						<button class="btn btn-success" routerLink="/menu"> Shop More</button>
 					</td>
 					<td>
-						<button class="btn btn-danger"> Checkout</button>
+						<button class="btn btn-danger" routerLink="/checkout"> Checkout</button>
 					</td>
 					<td> Grand Total: <strong> ₹{{grandTotal}} </strong></td>
 				</tr>

@@ -19,6 +19,8 @@ import {CartPageComponent} from './components/cart-page/cart-page.component';
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {FooterComponent} from './components/footer/footer.component';
 import {MenupageComponent} from './components/menupage/menupage.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {MenupageComponent} from './components/menupage/menupage.component';
 		HttpClientModule,
 		MatListModule,
 		MatIconModule,
-		MatToolbarModule
+		MatToolbarModule,
+		MatSelectModule,
+		MatCardModule,
 	],
   providers: [],
   bootstrap: [AppComponent]

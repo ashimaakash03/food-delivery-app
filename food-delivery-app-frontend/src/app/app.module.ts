@@ -21,6 +21,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {MenupageComponent} from './components/menupage/menupage.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
+import {CheckoutComponent} from "./components/checkout/checkout.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {MatCardModule} from "@angular/material/card";
 	  CartPageComponent,
 	  HomepageComponent,
 	  FooterComponent,
-	  MenupageComponent
+	  MenupageComponent,
+	  CheckoutComponent
   ],
 	imports: [
 		BrowserModule,

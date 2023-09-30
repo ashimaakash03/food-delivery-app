@@ -31,8 +31,9 @@ export class CartService {
 
 	getTotalPrice(): number {
 		let totalPrice: number = 0;
-		this.cartItemList.map((item: FoodItem) => {
-			totalPrice += item.price;
+		let cost: number = 0;
+		this.cartItemList.forEach((item: FoodItem) => {
+			cost += item.quantity * item.price;
 		});
 		return totalPrice;
 	}

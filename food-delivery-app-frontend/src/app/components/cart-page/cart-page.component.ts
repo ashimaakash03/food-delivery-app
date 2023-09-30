@@ -29,4 +29,17 @@ export class CartPageComponent implements OnInit {
 		this.cartService.clearCart();
 	}
 
+	decreaseQuantity(item: FoodItem): number {
+		if (item.quantity <= 1) {
+			alert("Quantity Cannot be decreased");
+		} else {
+			item.quantity--;
+		}
+		return item.quantity;
+	}
+
+	increaseQuantity(item: FoodItem): number {
+		item.quantity++;
+		return item.quantity;
+	}
 }

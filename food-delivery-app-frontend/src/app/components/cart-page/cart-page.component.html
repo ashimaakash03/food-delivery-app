@@ -36,9 +36,9 @@
 					<td>{{item.name}}</td>
 					<td>{{item.category}}</td>
 					<td>
-						<button class="badge bg-danger"> -</button>
+						<button (click)="decreaseQuantity(item)" class="badge bg-danger"> -</button>
 						{{item.quantity}}
-						<button class="badge bg-success"> +</button>
+						<button (click)="increaseQuantity(item)" class="badge bg-success"> +</button>
 					</td>
 					<td>{{item.price}}</td>
 					<td>{{item.quantity * item.price}}</td>

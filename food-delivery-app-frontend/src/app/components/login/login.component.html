@@ -1,51 +1,51 @@
 <div class="container-fluid">
 	<div class="row mt-4">
-		<div class="col">
+		<div class="col mb-5">
 
 			<form [formGroup]="loginForm" class="needs-validation" novalidate>
 				<h2 class="fs-4 text-center">
 					Login Form
 				</h2>
-				<div class="mt-4">
-					<mat-form-field class="col-12">
-						<mat-label>Full Name</mat-label>
-						<input
-							formControlName="fullname"
-							matInput
-							maxlength="50"
-							placeholder="ex: Axe00, Ashish"
-							type="text"
-						/>
-					</mat-form-field>
-					<mat-error
-						*ngIf="loginForm.controls['fullname'].invalid && (loginForm.controls['fullname'].dirty || loginForm.controls['fullname'].touched)">
-						<mat-error *ngIf="loginForm.controls['fullname'].hasError('required')">
-							Full Name cannot be empty
-						</mat-error>
-					</mat-error>
-				</div>
-				<div class="mt-4">
-					<mat-form-field class="col-12">
-						<mat-label>Contact</mat-label>
-						<input
-							formControlName="contact"
-							matInput
-							maxlength="10"
-							pattern="^[6-9]\d{9}$"
-							placeholder="ex: 9876543210"
-							type="text"
-						/>
-					</mat-form-field>
-					<mat-error
-						*ngIf="loginForm.controls['contact'].invalid && (loginForm.controls['contact'].dirty || loginForm.controls['contact'].touched)">
-						<mat-error *ngIf="loginForm.controls['contact'].hasError('required')">
-							Contact cannot be empty
-						</mat-error>
-						<mat-error *ngIf="loginForm.controls['contact'].hasError('pattern')">
-							Contact should be 10 digits and start with 6, 7, 8, or 9
-						</mat-error>
-					</mat-error>
-				</div>
+				<!--				<div class="mt-4">-->
+				<!--					<mat-form-field class="col-12">-->
+				<!--						<mat-label>Full Name</mat-label>-->
+				<!--						<input-->
+				<!--							formControlName="fullname"-->
+				<!--							matInput-->
+				<!--							maxlength="50"-->
+				<!--							placeholder="ex: Axe00, Ashish"-->
+				<!--							type="text"-->
+				<!--						/>-->
+				<!--					</mat-form-field>-->
+				<!--					<mat-error-->
+				<!--						*ngIf="loginForm.controls['fullname'].invalid && (loginForm.controls['fullname'].dirty || loginForm.controls['fullname'].touched)">-->
+				<!--						<mat-error *ngIf="loginForm.controls['fullname'].hasError('required')">-->
+				<!--							Full Name cannot be empty-->
+				<!--						</mat-error>-->
+				<!--					</mat-error>-->
+				<!--				</div>-->
+				<!--				<div class="mt-4">-->
+				<!--					<mat-form-field class="col-12">-->
+				<!--						<mat-label>Contact</mat-label>-->
+				<!--						<input-->
+				<!--							formControlName="contact"-->
+				<!--							matInput-->
+				<!--							maxlength="10"-->
+				<!--							pattern="^[6-9]\d{9}$"-->
+				<!--							placeholder="ex: 9876543210"-->
+				<!--							type="text"-->
+				<!--						/>-->
+				<!--					</mat-form-field>-->
+				<!--					<mat-error-->
+				<!--						*ngIf="loginForm.controls['contact'].invalid && (loginForm.controls['contact'].dirty || loginForm.controls['contact'].touched)">-->
+				<!--						<mat-error *ngIf="loginForm.controls['contact'].hasError('required')">-->
+				<!--							Contact cannot be empty-->
+				<!--						</mat-error>-->
+				<!--						<mat-error *ngIf="loginForm.controls['contact'].hasError('pattern')">-->
+				<!--							Contact should be 10 digits and start with 6, 7, 8, or 9-->
+				<!--						</mat-error>-->
+				<!--					</mat-error>-->
+				<!--				</div>-->
 				<div class="mt-4">
 					<mat-form-field class="col-12">
 						<mat-label>Email</mat-label>

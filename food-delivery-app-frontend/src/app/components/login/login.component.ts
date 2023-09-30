@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
 
 	constructor(private formBuilderService: FormBuilder, private httpClient: HttpClient, private router: Router, private snackBar: MatSnackBar) {
 		this.loginForm = this.formBuilderService.group({
-			fullname: ['', [Validators.required, Validators.maxLength(50)]],
-			contact: ['', [Validators.required, Validators.pattern('^[6-9]\\d{9}$')]],
+			// fullname: ['', [Validators.required, Validators.maxLength(50)]],
+			// contact: ['', [Validators.required, Validators.pattern('^[6-9]\\d{9}$')]],
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]]
 		})

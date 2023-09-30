@@ -51,19 +51,4 @@ export class CartService {
 		this.foodList.next(this.cartItemList);
 	}
 
-	decreaseQuantity(food: FoodItem) {
-		this.cartItemList.map((item: FoodItem) => {
-			if (food.id === item.id) {
-				food.quantity -= 1;
-			}
-		})
-	}
-
-	increaseQuantity(food: FoodItem) {
-		this.cartItemList.map((item: FoodItem) => {
-			if (food.id === item.id) {
-				food.quantity += 1;
-			}
-		})
-	}
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FoodItem} from "../../models/food-item";
 import {FoodService} from "../../services/food.service";
 import {CartService} from "../../services/cart.service";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-menupage', templateUrl: './menupage.component.html', styleUrls: ['./menupage.component.css']
@@ -9,7 +10,7 @@ import {CartService} from "../../services/cart.service";
 export class MenupageComponent implements OnInit {
 	menuitems: FoodItem[] = [];
 
-	constructor(private foodService: FoodService, private cartService: CartService) {
+	constructor(private foodService: FoodService, private cartService: CartService, private route: Router) {
 	}
 
 	ngOnInit(): void {
@@ -26,5 +27,6 @@ export class MenupageComponent implements OnInit {
 
 	addToCart(foodItem: FoodItem) {
 		this.cartService.addToCart(foodItem);
+		this.route.navigateByUrl("/cart");
 	}
 }

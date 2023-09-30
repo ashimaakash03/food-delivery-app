@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FoodItem} from "../../models/food-item";
 import {CartService} from "../../services/cart.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
 	selector: 'app-cart-page',
@@ -11,7 +12,7 @@ export class CartPageComponent implements OnInit {
 	public foods: FoodItem[] = [];
 	public grandTotal: number = 0;
 
-	constructor(private cartService: CartService) {
+	constructor(private cartService: CartService, private snackbar: MatSnackBar) {
 	}
 
 	ngOnInit(): void {
@@ -31,7 +32,9 @@ export class CartPageComponent implements OnInit {
 
 	decreaseQuantity(item: FoodItem): number {
 		if (item.quantity <= 1) {
-			alert("Quantity Cannot be decreased");
+			this.snackbar.open("Quantity Cannot be decreased","Close",{
+				duration: 3000
+			})
 		} else {
 			item.quantity--;
 		}

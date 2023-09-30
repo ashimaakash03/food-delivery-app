@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {FoodItem} from "../models/food-item";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
 	providedIn: 'root'
@@ -10,7 +11,7 @@ export class CartService {
 	public cartItemList: FoodItem[] = [];
 	public foodList = new BehaviorSubject<any>([]);
 
-	constructor() {
+	constructor(private snackbar: MatSnackBar) {
 	}
 
 	getFoods() {
@@ -26,7 +27,9 @@ export class CartService {
 		this.cartItemList.push(food);
 		this.foodList.next(this.cartItemList);
 		this.getTotalPrice();
-		alert(food.name + " was added");
+		this.snackbar.open(`${food.name} was added`,"OK",{
+			duration: 3000
+		})
 	}
 
 	getTotalPrice(): number {

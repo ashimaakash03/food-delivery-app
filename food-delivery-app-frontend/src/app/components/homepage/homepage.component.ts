@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestaurantService} from "../../services/restaurant.service";
 import {Restaurant} from "../../models/restaurant";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -11,14 +12,16 @@ import {Restaurant} from "../../models/restaurant";
 export class HomepageComponent implements OnInit {
 	restaurants: Restaurant[] = [];
 
-	constructor(private restaurantService: RestaurantService) {
+	constructor(private restaurantService: RestaurantService, private snackbar: MatSnackBar) {
 	}
     ngOnInit(): void {
 		// @ts-ignore
 		this.restaurants = this.restaurantService.getAll().subscribe(
 			(data: Restaurant[]) => {
 				this.restaurants = data;
-				alert("List of Restaurants Fetched");
+				this.snackbar.open("List of Restaurants Fetched","OK",{
+					duration: 3000, panelClass: ['mat-toolbar', 'blue']
+				})
 			}
 		)
 	}

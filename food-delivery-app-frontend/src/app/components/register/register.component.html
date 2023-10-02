@@ -2,7 +2,7 @@
 	<div class="row mt-4">
 		<div class="col">
 
-			<form [formGroup]="registerForm" class="needs-validation" novalidate>
+			<form (ngSubmit)="registerCustomer()" [formGroup]="registerForm" class="needs-validation" novalidate>
 				<h2 class="fs-4 text-center">
 					Register Form®️
 				</h2>
@@ -98,8 +98,8 @@
 						<mat-card>
 							<mat-label>Please select your city</mat-label>
 							<mat-select>
-								<mat-option *ngFor="let option of cities">
-									{{option.name}}
+								<mat-option *ngFor="let city of cities">
+									{{city}}
 								</mat-option>
 							</mat-select>
 						</mat-card>
@@ -107,7 +107,6 @@
 				</div>
 				<div class="mt-4 d-flex justify-content-around">
 					<button
-						(click)="register()"
 						[disabled]="registerForm.invalid"
 						class="col-3 rounded-pill"
 						color="primary"

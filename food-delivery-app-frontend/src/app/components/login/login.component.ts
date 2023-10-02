@@ -1,8 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Customer} from "../../models/customer";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -11,7 +7,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class LoginComponent implements OnInit {
 	loginForm: FormGroup
 
-	constructor(private formBuilderService: FormBuilder, private httpClient: HttpClient, private router: Router, private snackBar: MatSnackBar) {
+	constructor(private formBuilderService: FormBuilder) {
 		this.loginForm = this.formBuilderService.group({
 			// fullname: ['', [Validators.required, Validators.maxLength(50)]],
 			// contact: ['', [Validators.required, Validators.pattern('^[6-9]\\d{9}$')]],
@@ -31,29 +27,29 @@ export class LoginComponent implements OnInit {
 		});
 	}
 
-	login(data: Customer) {
-		this.httpClient.post('http://localhost:8081/home/login', data)
-			.subscribe((result: any) => {
-				this.router.navigate(['/home'])
-				this.snackBar.open('Logged in Successfully', 'Close', {
-					duration: 2000
-				});
-			}, (error: HttpErrorResponse) => {
-				if (error.status === 404) {
-					this.snackBar.open('Error: ' + error.error.message, 'Close', {
-						duration: 3000
-					});
-				} else if (error.status === 401) {
-					this.snackBar.open('Error: ' + error.error.message, 'Close', {
-						duration: 3000
-					});
-				} else {
-					console.error('Error: ', error);
-				}
-			});
-	}
-
-	customerLogin(data: Customer) {
-		this.login(data)
-	}
+	// login(data: Customer) {
+	// 	this.httpClient.post('http://localhost:8081/home/login', data)
+	// 		.subscribe((result: any) => {
+	// 			this.router.navigate(['/home'])
+	// 			this.snackBar.open('Logged in Successfully', 'Close', {
+	// 				duration: 2000
+	// 			});
+	// 		}, (error: HttpErrorResponse) => {
+	// 			if (error.status === 404) {
+	// 				this.snackBar.open('Error: ' + error.error.message, 'Close', {
+	// 					duration: 3000
+	// 				});
+	// 			} else if (error.status === 401) {
+	// 				this.snackBar.open('Error: ' + error.error.message, 'Close', {
+	// 					duration: 3000
+	// 				});
+	// 			} else {
+	// 				console.error('Error: ', error);
+	// 			}
+	// 		});
+	// }
+	//
+	// customerLogin(data: Customer) {
+	// 	this.login(data)
+	// }
 }

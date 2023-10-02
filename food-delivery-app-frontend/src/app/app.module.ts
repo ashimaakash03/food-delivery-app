@@ -24,35 +24,10 @@ import {MatCardModule} from "@angular/material/card";
 import {CheckoutComponent} from "./components/checkout/checkout.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SearchComponent,
-    RegisterComponent,
-	  LoginComponent,
-	  CartPageComponent,
-	  HomepageComponent,
-	  FooterComponent,
-	  MenupageComponent,
-	  CheckoutComponent
-  ],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		BrowserAnimationsModule,
-		MatInputModule,
-		ReactiveFormsModule,
-		MatButtonModule,
-		FormsModule,
-		MatSnackBarModule,
-		HttpClientModule,
-		MatListModule,
-		MatIconModule,
-		MatToolbarModule,
-		MatSelectModule,
-		MatCardModule,
-	],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent, HeaderComponent, SearchComponent, RegisterComponent, LoginComponent, CartPageComponent, HomepageComponent, FooterComponent, MenupageComponent, CheckoutComponent],
+	imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatInputModule, ReactiveFormsModule, MatButtonModule, FormsModule, MatSnackBarModule, HttpClientModule, MatListModule, MatIconModule, MatToolbarModule, MatSelectModule, MatCardModule],
+	providers: [],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

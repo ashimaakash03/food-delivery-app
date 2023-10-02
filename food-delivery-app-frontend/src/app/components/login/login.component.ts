@@ -1,13 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {Customer} from "../../models/customer";
 
 @Component({
 	selector: 'app-login', templateUrl: './login.component.html', styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+	baseUrl: string = "http://localhost:3004/customers-list";
 	loginForm: FormGroup
 
-	constructor(private formBuilderService: FormBuilder) {
+	constructor(private formBuilderService: FormBuilder, private http: HttpClient, private router: Router) {
 		this.loginForm = this.formBuilderService.group({
 			// fullname: ['', [Validators.required, Validators.maxLength(50)]],
 			// contact: ['', [Validators.required, Validators.pattern('^[6-9]\\d{9}$')]],
@@ -52,4 +57,18 @@ export class LoginComponent implements OnInit {
 	// customerLogin(data: Customer) {
 	// 	this.login(data)
 	// }
+
+	loginCustomer() {
+		this.http.get<Array<Customer>>(this.baseUrl).subscribe((result) => {
+			// @ts-ignore
+			const user: Customer = result.filter((person: Customer) => {
+				return person.email === this.loginForm.value.email && person.password === this.loginForm.value.password;
+			})
+			if (user) {
+				alert(" Login successful !!! ");
+				this.loginForm.reset();
+				this.router.navigateByUrl("/home");
+			}
+		})
+	}
 }

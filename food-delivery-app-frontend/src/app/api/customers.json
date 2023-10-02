@@ -1,3 +1,18 @@
 {
-	"customers-list": []
+	"customers-list": [
+		{
+			"fullname": "Ashim Aakash Roy",
+			"contact": "9154472559",
+			"email": "ashimaakash1997@gmail.com",
+			"password": "@Password1234",
+			"id": 1
+		},
+		{
+			"fullname": "Ashutosh Kumar",
+			"contact": "9162354875",
+			"email": "ashutosh.k.work@gmail.com",
+			"password": "@Babu1234",
+			"id": 2
+		}
+	]
 }

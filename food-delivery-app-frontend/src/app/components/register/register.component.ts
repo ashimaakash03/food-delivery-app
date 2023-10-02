@@ -85,7 +85,7 @@ export class RegisterComponent implements OnInit {
 		};
 
 		this.http.post<Customer>(this.baseUrl, customer, httpOptions).subscribe(() => {
-			alert("Registration Successfully Done");
+			alert(customer.fullname + " Registered Successfully");
 			this.registerForm.reset();
 			this.router.navigateByUrl("/login");
 		})

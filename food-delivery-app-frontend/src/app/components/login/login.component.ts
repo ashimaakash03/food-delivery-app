@@ -68,6 +68,10 @@ export class LoginComponent implements OnInit {
 				alert(" Login successful !!! ");
 				this.loginForm.reset();
 				this.router.navigateByUrl("/home");
+				localStorage.setItem("isLoggeedIn", "true");
+			} else {
+				alert("Login Unsuccessful");
+				localStorage.setItem("isLoggedIn", "false");
 			}
 		})
 	}

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from "../../services/cart.service";
+import {authGuard} from "../../guards/auth.guard";
 
 @Component({
   selector: 'app-header',
@@ -18,4 +19,6 @@ export class HeaderComponent implements OnInit {
 			this.itemsInCart = res.length;
 		})
 	}
+
+	protected authGuard = authGuard;
 }
